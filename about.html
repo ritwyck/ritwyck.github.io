@@ -73,11 +73,16 @@
       transition: color .2s ease, background-size .25s ease;
     }
     .nav-links a:hover, .nav-links a:focus-visible, .nav-links a[aria-current] { color: var(--ink); background-size: 100% 1px; }
-    main {
+      main {
       width: min(var(--page), calc(100% - 64px));
-      margin: auto;
+      margin: 0 auto;
       padding-block: clamp(64px, 10vw, 120px);
+      flex: 1 0 auto;
+      min-height: calc(100svh - 76px);
+      display: flex;
+      align-items: center;
     }
+    .about-layout { width: 100%; }
     .about-layout {
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(240px, 370px);
