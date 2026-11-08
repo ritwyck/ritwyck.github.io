@@ -1,0 +1,2185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#faf8f3">
+  <meta name="description" content="Technical projects, academic research, and creative work by Ritwik Srivastava.">
+  <title>Home — ritwyck</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext x='16' y='25' text-anchor='middle' font-size='28' font-weight='600' font-family='Kohinoor Devanagari,Noto Sans Devanagari,Nirmala UI,Mangal,sans-serif' fill='%23171717'%3E%E0%A4%8B%3C/text%3E%3C/svg%3E">  <style>
+    :root {
+      color-scheme: light;
+      --viewport-gutter: 0px;
+            --paper: #faf8f3;
+--video-bg: #fff;     --radius: 28px;
+      --ink: #111;
+      --muted: #555;
+      --olive: #171717;
+      --olive-dark: #111;
+      --line: #e5e5e5;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: "Avenir Next", Avenir, "Segoe UI", sans-serif;
+      --page: 1000px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 0; }    body {
+            min-width: 320px;
+      margin: 0;
+      overflow-x: clip;
+      background:
+        radial-gradient(circle at 1px 1px, rgb(17 17 17 / 11%) 1px, transparent 0) 0 0 / 24px 24px,
+        var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    ::selection { background: #111; color: #fff; }
+
+    .nav {
+      width: min(var(--page), calc(100% - 64px));
+      min-height: 76px;
+      margin-inline: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid var(--ink);
+    }
+    .wordmark {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+          font-size: 28px;
+      font-weight: 650;
+      letter-spacing: -.05em;
+      line-height: 1;
+    }
+    .flower-mark {
+      display: inline-block;
+      color: var(--olive);
+      font-family: "Kohinoor Devanagari", "Noto Sans Devanagari", "Nirmala UI", "Mangal", sans-serif;
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 1;
+      transition: transform .35s cubic-bezier(.2,.7,.3,1);
+    }    .wordmark:hover .flower-mark { transform: rotate(28deg) scale(1.12); }
+    .nav-links { display: flex; align-items: center; gap: 27px; }
+    .nav-links a {
+      color: var(--muted);
+      font-size: 13px;
+      text-decoration: none;
+      background-image: linear-gradient(var(--olive), var(--olive));
+      background-position: left bottom;
+      background-repeat: no-repeat;
+      background-size: 0 1px;
+      transition: color .2s ease, background-size .25s ease;
+    }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--olive-dark); background-size: 100% 1px; }
+
+    .hero {
+      position: relative;
+      isolation: isolate;
+      width: calc(100vw - var(--viewport-gutter));
+      min-height: calc(100svh - 76px);
+      margin-left: calc(50% - (100vw - var(--viewport-gutter)) / 2);
+            overflow: hidden;
+      background: transparent;
+      display: grid;
+      align-items: center;
+    }
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+      width: fit-content;
+      max-width: min(88%, 760px);
+      margin: auto;
+      padding: clamp(20px, 4vw, 36px);
+            text-align: center;
+      text-shadow: 0 0 36px #faf8f3, 0 0 14px #faf8f3;
+      color: var(--ink);
+    }
+    .hero-copy h1 em { color: var(--olive); }
+    h1 {
+      max-width: 700px;
+      margin: 0;
+      font-size: clamp(58px, 8.7vw, 100px);
+      font-weight: 520;
+      letter-spacing: -.085em;
+      line-height: .96;
+    }
+    h1 em {
+      position: relative;
+      display: inline-block;
+      color: var(--olive);
+            font-family: inherit;
+      font-style: italic;
+      font-weight: inherit;
+      letter-spacing: inherit;
+    }
+    .hero-copy > p {
+      max-width: 500px;
+      margin: 23px auto 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.75;
+    }
+       .hero-link {
+      width: 56px;
+      height: 56px;
+      margin: 28px auto 0;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--ink);
+      border-radius: 50%;
+      background: var(--ink);
+      color: #fff;
+      text-decoration: none;
+      text-shadow: none;
+      animation: rise .9s .8s both, nudge 2.2s ease-in-out 1.8s infinite;
+      transition: background .2s ease, color .2s ease;
+    }
+    .hero-link svg { width: 22px; height: 22px; }
+    .hero-link:hover { background: #fff; color: var(--ink); animation-play-state: running, paused; }
+
+    .hero-collage {
+      position: absolute;
+      z-index: 0;
+      inset: 0;
+      overflow: visible;
+      pointer-events: none;
+    }
+    .collage-tile {
+      position: absolute;
+      overflow: hidden;
+            border: 7px solid #fff;
+        border-radius: 6px;
+      background: transparent;
+      box-shadow: 0 20px 50px rgb(0 0 0 / 14%);
+    }
+    .collage-tile img,
+    .collage-tile video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+            filter: brightness(1.08) saturate(.7) blur(2px);
+      transform: scale(1.035);
+    }
+        .collage-tile::after {
+      position: absolute;
+      inset: 0;
+      background: rgb(255 255 255 / 50%);
+      content: "";
+      pointer-events: none;
+    }
+    .collage-thesis { top: -10%; left: -2%; width: 42%; height: 64%; }
+    .collage-gufah { top: 1%; right: 6%; width: 32%; height: 48%; }
+    .collage-paper { bottom: -20%; left: 20%; width: 38%; height: 54%; }
+    .collage-bots { right: -5%; bottom: -14%; width: 38%; height: 55%; }
+    
+    .work { border-top: 1px solid var(--line); }
+    .section-inner { width: min(var(--page), calc(100% - 64px)); margin-inline: auto; }
+    
+    .portfolio-section { padding-bottom: 64px; }
+    .portfolio-section + .portfolio-section {
+      padding-top: 40px;
+      border-top: 1px solid var(--line);
+    }
+    .project-stage > h3 {
+      margin: 0 14px 14px;
+            color: var(--ink);
+      font-family: var(--sans);
+      font-size: 30px;
+      font-style: normal;
+      font-weight: 520;
+      letter-spacing: -.07em;
+    }
+    .project-stage {
+      position: relative;
+      width: calc(100vw - var(--viewport-gutter));
+      height: 100svh;
+      margin-left: calc(50% - (100vw - var(--viewport-gutter)) / 2);
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+            background: transparent;
+    }
+    .project-slide-controls {
+      position: absolute;
+      z-index: 9;
+      right: 20px;
+      bottom: 18px;
+      display: none;
+      gap: 8px;
+    }
+    .project-slide-controls[hidden] { display: none; }
+    .project-slide-controls button {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+            border: 1px solid rgb(17 17 17 / 70%);
+      border-radius: 50%;
+      background: #fff;
+      color: #111;
+      font: inherit;
+      font-size: 19px;
+      cursor: pointer;
+      transition: background .2s ease, color .2s ease, opacity .2s ease;
+    }
+    .project-slide-controls button:hover:not(:disabled) { background: #111; color: #fff; }
+    .project-slide-controls button:disabled { opacity: .42; cursor: default; }
+.project-slide-controls button:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }    .project-scroll-space { height: 0; }
+    .project-rail {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+    .project-window {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      overflow-x: auto;
+      overscroll-behavior-inline: contain;
+      scrollbar-width: thin;
+      scrollbar-color: #cbd3ba transparent;
+    }
+    .project-grid {
+      width: max-content;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .project-card {
+      position: relative;
+      min-width: 0;
+      flex: 0 0 auto;
+      width: var(--card-width, clamp(300px, min(90vw, 82svh), 800px));
+      height: var(--card-height, min(82svh, 800px));
+      overflow: hidden;
+           border: 1px solid #d9ddd2;
+      border-radius: var(--radius);
+      background: var(--video-bg);
+box-shadow: 0 12px 32px rgb(0 0 0 / 14%);
+      transition: border-color .65s ease, box-shadow .65s ease, transform .9s cubic-bezier(.2,.7,.25,1),
+        width .65s cubic-bezier(.2,.7,.25,1), flex-basis .65s cubic-bezier(.2,.7,.25,1);
+    }
+    .portfolio-section.is-scroll-driven { --scroll-duration: 0px; }
+    .portfolio-section.is-scroll-driven .project-scroll-space { height: var(--scroll-duration); }
+    .portfolio-section.is-scroll-driven .project-stage {
+      position: sticky;
+      top: 0;
+    }
+    .portfolio-section.is-scroll-driven .project-stage > h3 {
+      position: absolute;
+      z-index: 8;
+            top: 16px;
+      left: max(28px, calc((100vw - var(--viewport-gutter) - var(--page)) / 2));
+      margin: 0;
+    }
+    .portfolio-section.is-scroll-driven .project-window {
+      overflow: hidden;
+      scrollbar-width: none;
+    }
+    .portfolio-section.is-scroll-driven .project-grid { will-change: transform; }
+    .project-card[open] { border-color: #ccd3bb; }
+    .project-card.is-current {
+      z-index: 1;
+      transform: scale(1);
+            border-color: rgb(17 17 17 / 85%);
+      box-shadow: 0 22px 50px rgb(0 0 0 / 18%);
+    }
+    .project-card[open].is-current { z-index: 5; }
+    .project-card.is-receded { transform: scale(.93) rotate(-1.5deg); }
+    .project-card.is-receded:nth-child(even) { transform: scale(.93) rotate(1.5deg); }    .project-preview::after {
+      position: absolute;
+      z-index: 2;
+      inset: 0;
+      background: rgb(255 255 255 / 0%);
+      backdrop-filter: blur(0);
+      content: "";
+      pointer-events: none;
+      transition: background .75s ease, backdrop-filter .75s ease;
+    }
+    .project-card.is-receded .project-preview::after {
+      background: rgb(255 255 255 / 66%);
+      backdrop-filter: blur(4px);
+    }
+    .project-card:not(.is-current) .project-video {
+      filter: blur(5px);
+      transition: filter .3s ease;
+    }
+    .project-card.is-current .project-video { filter: blur(0); }
+        .project-card:not(.is-current) .project-image-gallery img { filter: blur(5px); }
+    .project-card.is-current .project-image-gallery img { filter: blur(0); }
+        .project-card:first-child:not(.passed) .project-video { filter: blur(0); }
+    
+       .project-card[open] .project-video {
+      top: 0;
+      right: auto;
+      bottom: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+    }
+    .project-card[open] .project-image-gallery {
+      right: auto;
+      width: 50%;
+    }
+        .project-card summary {
+      position: absolute;
+      z-index: auto;
+      inset: 0;
+      cursor: default;
+      list-style: none;
+    }
+    .project-card summary::-webkit-details-marker { display: none; }
+    .project-card summary:focus-visible { outline: 2px solid var(--olive); outline-offset: -4px; }
+    .project-heading { min-width: 0; }
+    .project-heading strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 550;
+      letter-spacing: -.015em;
+    }
+    .project-heading span { display: none; }
+    .project-type { display: none; }
+    .project-label {
+      position: absolute;
+      z-index: 4;
+      right: 12px;
+      bottom: 12px;
+      left: 12px;
+      min-height: 56px;
+      padding: 10px 150px 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border: 1px solid rgb(35 39 31 / 10%);
+      border-radius: 2px;
+      background: linear-gradient(90deg, rgb(15 17 16 / 88%), rgb(15 17 16 / 66%));
+      box-shadow: 0 3px 12px rgb(0 0 0 / 16%);
+      color: #fff;
+      opacity: 0;
+      transform: translateY(8px);
+      text-align: left;
+      transition: opacity .5s ease, transform .55s cubic-bezier(.2,.7,.25,1);
+    }
+    .project-card.is-playing .project-label {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: opacity .25s ease, transform .3s ease, visibility 0s linear .3s;
+    }
+    .project-card[open] .project-label { opacity: 0; visibility: hidden; }
+    .project-heading span {
+      margin-top: 3px;
+      display: block;
+      color: rgb(255 255 255 / 72%);
+      font-size: 11px;
+      line-height: 1.35;
+    }
+        .project-preview {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: var(--video-bg);
+    }
+       .project-image-gallery {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: var(--video-bg);
+    }
+    .project-image-gallery img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+         display: block;
+      background: var(--video-bg);
+      object-fit: contain;
+      opacity: 0;
+      transition: opacity .8s ease, filter .3s ease;
+    }
+    .project-image-gallery img.is-active { opacity: 1; }
+    .portfolio-section[aria-labelledby="creative-title"] { --photo-card-bg: var(--paper); }    .portfolio-section[aria-labelledby="creative-title"] .project-card,
+    .portfolio-section[aria-labelledby="creative-title"] .project-preview,
+    .portfolio-section[aria-labelledby="creative-title"] .project-image-gallery,
+    .portfolio-section[aria-labelledby="creative-title"] .project-image-gallery img,
+    .portfolio-section[aria-labelledby="creative-title"] .project-detail {
+      background: var(--photo-card-bg);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .project-image-gallery img { transition: none; }
+    }
+    .project-video {
+      position: absolute;
+      z-index: 0;
+            inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      background: var(--video-bg);
+      object-fit: contain;
+      opacity: 1;
+      transition: filter .3s ease;
+    }
+        .project-card.has-project-logo .project-detail { padding-bottom: 116px; }
+    .project-video-logo {
+      position: absolute;
+      z-index: 7;
+      bottom: 14px;
+      right: 14px;
+            box-sizing: border-box;
+            width: 210px;
+      height: 92px;
+      max-width: none;
+      max-height: none;
+      padding: 14px 24px;
+      border: 1px solid rgb(30 36 28 / 8%);
+            border-radius: 12px;
+      background: rgb(255 255 255 / 94%);
+      box-shadow: 0 4px 16px rgb(30 36 28 / 12%);
+      object-fit: contain;
+    }
+    .project-independent-token {
+      display: grid;
+      place-items: center;
+      padding: 12px 18px;
+      color: #30362e;
+      font-size: 16px;
+      font-weight: 650;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .project-slide-mark {
+      position: absolute;
+      z-index: 3;
+      top: 50%;
+      left: 50%;
+      max-width: 64%;
+      padding: 12px 18px;
+      border: 1px solid rgb(30 36 28 / 9%);
+      border-radius: 3px;
+      background: rgb(255 255 255 / 94%);
+      box-shadow: 0 8px 26px rgb(24 30 35 / 18%);
+      color: #30362e;
+      font-size: clamp(13px, 2vw, 21px);
+      font-weight: 600;
+      letter-spacing: .015em;
+      opacity: 0;
+      display: grid;
+      gap: 5px;
+      text-align: center;
+      text-wrap: balance;
+      transform: translate(-50%, calc(-50% + 10px)) scale(.97);
+      transition: opacity .5s ease, transform .6s cubic-bezier(.2,.7,.25,1);
+      pointer-events: none;
+    }
+    .project-slide-mark span { color: var(--muted); font-size: .68em; font-weight: 450; letter-spacing: 0; }
+    .project-card[open] .project-slide-mark { display: none; }
+    .project-card.is-title .project-slide-mark {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    .project-card.is-current:not(.has-project-logo) .project-slide-mark,
+    .project-card.is-receded:not(.has-project-logo) .project-slide-mark {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    .project-card.is-playing .project-slide-mark,
+    .project-card.is-playing.is-current:not(.has-project-logo) .project-slide-mark,
+    .project-card.is-playing.is-receded:not(.has-project-logo) .project-slide-mark {
+      opacity: 0;
+      visibility: hidden;
+      transform: translate(-50%, calc(-50% - 6px)) scale(.98);
+    }
+    .project-detail {
+      position: absolute;
+      z-index: 6;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: auto;
+      width: 50%;
+            overflow: hidden;
+      padding: clamp(16px, 2.4vw, 30px);
+            border-left: 1px solid var(--line);
+      background: var(--paper);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateX(10px);
+      transition: opacity .35s ease, transform .45s cubic-bezier(.2,.7,.25,1),
+        visibility 0s linear .5s;
+    }
+    .project-card[open] .project-detail {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateX(0);
+      transition-delay: 0s;
+    }
+    .project-detail-inner { position: relative; }
+    .project-detail-inner > :first-child { margin-top: 0; }
+    .project-detail-inner > :last-child { margin-bottom: 0; }
+    .project-detail-title {
+      margin: 0 0 18px;
+      color: var(--ink);
+      font-size: clamp(19px, 2.5vw, 30px);
+      font-weight: 550;
+      letter-spacing: -.04em;
+      line-height: 1.15;
+      text-wrap: balance;
+    }
+    .project-role {
+      margin: 0;
+      color: var(--ink);
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: -.02em;
+      line-height: 1.45;
+    }
+    .project-meta {
+      margin: 0;
+      padding: 18px 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      border-top: 1px solid var(--line);
+    }
+    .project-meta div { min-width: 0; }
+    .project-meta dt {
+      margin-bottom: 5px;
+      color: var(--olive-dark);
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .project-meta dd { margin: 0; color: #45483f; font-size: 13px; line-height: 1.6; }
+    .project-bullets {
+      margin: 0;
+      padding-left: 1.2em;
+      display: grid;
+            gap: clamp(6px, 1.1vh, 11px);
+      color: var(--ink);
+      font-size: clamp(12px, 1.9vh, 15px);
+      line-height: 1.6;
+    }
+        .project-more { display: none; }    @media (hover: hover) and (pointer: fine) {
+      .contact-links a:hover { filter: drop-shadow(0 4px 5px rgb(255 255 255 / 16%)); }
+    }
+
+    .contact {
+            padding: 80px 20px 64px;
+      border-top: 1px solid var(--line);
+      background: transparent;
+      color: var(--ink);
+      text-align: center;
+    }
+    .contact h2 {
+      margin: 0;
+      font-size: clamp(31px, 5vw, 47px);
+      font-weight: 520;
+      letter-spacing: -.075em;
+    }
+    .contact h2 em { color: var(--ink); font-family: inherit; font-style: normal; font-weight: inherit; }    .contact-links {
+      position: relative;
+      width: fit-content;
+      margin: 22px auto 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 26px;
+    }
+    .contact-links a {
+      width: 46px;
+      height: 46px;
+            display: grid;
+      place-items: center;
+      border: 1px solid var(--ink);
+      border-radius: 50%;
+      color: var(--ink);
+      transition: background .2s ease, color .2s ease, transform .2s ease;
+    }
+    .contact-links a:hover { transform: translateY(-3px); background: var(--ink); color: #fff; }
+    .contact-links a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+    .contact-links svg { width: 27px; height: 27px; fill: currentColor; }
+    footer {
+      width: min(var(--page), calc(100% - 64px));
+      min-height: 57px;
+      margin-inline: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+    }
+    footer p { margin: 0; }
+    .footer-mark {
+      margin-right: 6px;
+      color: var(--ink);
+      font-family: "Kohinoor Devanagari", "Noto Sans Devanagari", "Nirmala UI", "Mangal", sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      vertical-align: -2px;
+    }
+    @keyframes arrive {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+        .hero-copy h1 .word { display: inline-block; animation: rise 1s cubic-bezier(.2,.7,.2,1) both; }
+        .hero-copy h1 em.word { margin-left: .18em; animation-delay: .18s; }
+    .hero-copy > p { animation: rise 1s .5s both; }
+    .scribble { position: absolute; left: 0; bottom: -.04em; width: 100%; height: .16em; overflow: visible; }
+    .scribble path {
+      fill: none; stroke: var(--ink); stroke-width: 3; stroke-linecap: round;
+      vector-effect: non-scaling-stroke;
+      stroke-dasharray: 1; stroke-dashoffset: 1;
+      animation: draw 1s .9s ease-out forwards;
+    }
+    .collage-tile {
+ 
+      translate: calc(var(--mx, 0) * var(--depth, 30) * 1px) calc(var(--my, 0) * var(--depth, 30) * 1px);
+      transition: translate .7s cubic-bezier(.2,.7,.2,1);
+      animation: tile-in 1.1s cubic-bezier(.2,.8,.2,1) both, drift 9s ease-in-out infinite alternate;
+      animation-delay: var(--d, 0s), calc(var(--d, 0s) + 1.1s);
+    }
+       .collage-thesis { --depth: 36; --d: .05s; }
+    .collage-gufah { --depth: 56; --d: .2s; }
+    .collage-paper { --depth: 44; --d: .35s; }
+.collage-bots { --depth: 62; --d: .5s; }
+    .flower-mark { animation: bloom 1.1s cubic-bezier(.2,.8,.2,1) both; }
+    .progress {
+      position: fixed; top: 0; left: 0; z-index: 50; width: 100%; height: 3px;
+      background: var(--ink); transform-origin: left; transform: scaleX(var(--p, 0));
+    }
+    @keyframes rise { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+    @keyframes draw { to { stroke-dashoffset: 0; } }
+    @keyframes tile-in { from { opacity: 0; scale: .85; } to { opacity: 1; scale: 1; } }
+    @keyframes drift { from { transform: translateY(-8px); } to { transform: translateY(8px); } }
+    @keyframes nudge { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(7px); } }
+    @keyframes bloom { from { rotate: -120deg; scale: 0; } to { rotate: 0deg; scale: 1; } }
+ 
+    @media (max-width: 650px) 
+    {
+      html { scroll-padding-top: 0; }
+            .section-inner, footer { width: calc(100% - 40px); }
+      .nav { width: calc(100% - 24px); min-height: 76px; border-bottom-width: 3px; }
+      .flower-mark { font-size: 28px; }
+      .nav-links { gap: 16px; }
+      .nav-links a { font-size: 14px; color: var(--ink); font-weight: 500; }
+      .hero { min-height: calc(100svh - 76px); }  h1 { font-size: clamp(52px, 10.7vw, 73px); }
+      .hero-copy > p { max-width: 290px; font-size: 15px; }
+      .collage-tile { border-width: 6px; }
+      .collage-thesis { top: -5%; left: -8%; width: 52%; height: 50%; }
+      .collage-gufah { top: 1%; right: -5%; width: 38%; height: 38%; }
+      .collage-paper { bottom: -10%; left: 5%; width: 48%; height: 47%; }
+      .collage-bots { right: -9%; bottom: -7%; width: 47%; height: 49%; }
+      
+      .portfolio-section { padding-bottom: 48px; }
+      .portfolio-section + .portfolio-section { padding-top: 32px; }
+      .portfolio-section.is-scroll-driven { padding-bottom: 48px; }
+      .portfolio-section.is-scroll-driven .project-stage { position: relative; }
+      .project-stage { height: 100svh; min-height: 0; padding: 62px 0 74px; }.project-stage > h3 { position: absolute; z-index: 8; top: 12px; left: 20px; margin: 0; }      .project-window {
+        overflow-x: auto;
+        padding-inline: 6vw;
+        scrollbar-width: none;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+      }
+      .project-window::-webkit-scrollbar { display: none; }
+      .project-card { scroll-snap-align: center; }
+      .project-card[open] {
+        z-index: 5;
+        width: var(--card-width);
+        overflow: hidden;
+        flex-basis: var(--card-width);
+      }
+          .project-card[open] .project-video {
+        top: 0;
+        right: 0;
+        bottom: auto;
+        left: 0;
+        width: 100%;
+        height: 48%;
+      }
+      .project-card[open] .project-image-gallery {
+        right: 0;
+        bottom: auto;
+        width: 100%;
+        height: 48%;
+      }
+            .project-card.has-project-logo,
+      .project-card.has-project-logo .project-preview { background: var(--paper); }
+    
+      .project-detail {
+        top: 48%;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: clamp(14px, 4vw, 24px);
+        border-top: 1px solid var(--line);
+        border-left: 0;
+        transform: translateY(10px);
+      }
+          .project-card .project-video,
+      .project-card[open] .project-video,
+      .project-card .project-image-gallery,
+      .project-card[open] .project-image-gallery {
+        top: 0; right: 0; bottom: auto; left: 0;
+        width: 100%; height: var(--media-h, 42%);      }
+      .project-card .project-detail,
+      .project-card[open] .project-detail {
+        top: var(--media-h, 42%); right: 0; bottom: 0; left: 0;
+        width: 100%;
+        padding: 14px 16px 18px;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        border-top: 1px solid var(--line);
+        border-left: 0;
+        opacity: 1; visibility: visible; pointer-events: auto; transform: none;
+      }
+      .project-card.has-project-logo .project-detail { padding-bottom: 18px; }
+      .project-card.is-receded .project-detail { opacity: .5; }
+      .project-slide-mark { display: none; }
+        .project-detail-title { margin-bottom: 8px; font-size: 18px; }
+      .project-meta { padding-block: 8px; gap: 6px 12px; }
+      .project-meta dd { font-size: 12px; line-height: 1.4; }
+      .project-bullets { font-size: 14px; line-height: 1.55; gap: 9px; }             .project-slide-controls { right: 16px; bottom: 14px; display: flex; }
+      .project-slide-controls button { width: 44px; height: 44px; }
+            :root { --radius: 20px; }
+           .project-video-logo {
+        top: auto; bottom: 10px; right: 12px;
+        width: 124px; height: 44px; padding: 6px 11px; border-radius: 8px;
+      }
+      .project-card.has-project-logo .project-detail,
+      .project-card.has-project-logo[open] .project-detail { bottom: 62px; }
+      .project-independent-token { font-size: 9.5px; letter-spacing: .05em; padding: 6px 8px; }
+      .project-more { display: flex; width: fit-content; margin: 6px auto 12px; }
+      .project-flip { align-items: center; justify-content: center; gap: 8px; line-height: 1; }
+      .project-more svg {
+        width: 14px; height: 14px; flex: none;
+        fill: none; stroke: currentColor; stroke-width: 2.4;
+        stroke-linecap: round; stroke-linejoin: round;
+        transition: transform .25s ease;
+      }
+      .project-card.is-expanded .project-more svg { transform: rotate(180deg); }      .project-detail .project-bullets { display: none; }
+      .project-flip {
+        min-height: 40px; padding: 9px 16px;
+        border: 1px solid var(--ink); border-radius: 999px;
+        background: var(--ink); color: #fff;
+        font: inherit; font-size: 13px; font-weight: 600; cursor: pointer;
+      }
+
+      /* expanded state: slim video strip, text grows */
+      .project-card .project-video,
+      .project-card .project-image-gallery { transition: filter .3s ease, height .35s ease; }
+      .project-card .project-detail,
+      .project-card[open] .project-detail { transition: top .35s ease, opacity .35s ease; }
+      .project-card.is-expanded .project-video,
+      .project-card.is-expanded[open] .project-video,
+      .project-card.is-expanded .project-image-gallery,
+      .project-card.is-expanded[open] .project-image-gallery { height: 22%; }
+      .project-card.is-expanded > .project-detail,
+      .project-card.is-expanded[open] > .project-detail { top: 22%; }
+      .project-card.is-expanded .project-detail .project-bullets { display: grid; }
+     }
+    @media (max-width: 430px) {
+      .section-inner, footer { width: calc(100% - 32px); }
+      .wordmark, .flower-mark { font-size: 25px; }
+      .nav-links { gap: 12px; }
+      .hero { min-height: calc(100svh - 76px); }    h1 { font-size: clamp(49px, 12.5vw, 59px); }
+      .hero-copy > p { max-width: 265px; font-size: 14px; }
+      .hero-copy { max-width: 92%; padding: 20px 14px; }
+      .collage-tile { border-width: 5px; }
+      .collage-thesis { top: -3%; left: -13%; width: 58%; height: 46%; }
+      .collage-gufah { top: 3%; right: -8%; width: 42%; height: 34%; }
+      .collage-paper { bottom: -8%; left: 0; width: 52%; height: 41%; }
+      .collage-bots { right: -12%; bottom: -5%; width: 51%; height: 44%; }
+      .project-grid { gap: 9px; }
+      .portfolio-section { padding-bottom: 38px; }
+      .contact { padding-block: 38px 43px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+    <div class="progress" aria-hidden="true"></div>
+
+  <header>
+    <nav class="nav" aria-label="Main navigation">
+      <a class="wordmark" href="./">
+                <span class="flower-mark" aria-hidden="true" lang="sa">ऋ</span>
+        ritwyck
+      </a>
+      <div class="nav-links">
+        <a href="about.html">About</a>
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="home">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy"><h1 id="hero-title"><span class="word">cऋating</span><em class="word">(creating)</em></h1>
+<p><em> </em></p>
+
+<a class="hero-link" href="#work" aria-label="View my work"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a></div>
+
+            <div class="hero-collage" aria-hidden="true">
+        <div class="collage-tile collage-thesis">
+          <video src="assets/projects/infrasound-thesis/thesis.mp4" poster="assets/projects/infrasound-thesis/thesis.poster.jpg" autoplay muted loop playsinline preload="auto" tabindex="-1"></video>
+        </div>
+        <div class="collage-tile collage-gufah">
+          <video src="assets/projects/gufah/gufah.mp4" poster="assets/projects/gufah/gufah.poster.jpg" autoplay muted loop playsinline preload="auto" tabindex="-1"></video>
+        </div>
+                <div class="collage-tile collage-paper">
+          <video src="assets/projects/abzorb/abzorb.mp4" poster="assets/projects/abzorb/abzorb.poster.jpg" autoplay muted loop playsinline preload="auto" tabindex="-1"></video>
+        </div>
+                <div class="collage-tile collage-bots">
+          <video src="assets/projects/sbe-minor/AI%20Bots.mp4" poster="assets/projects/sbe-minor/AI%20Bots.poster.jpg" autoplay muted loop playsinline preload="auto" tabindex="-1"></video>
+        </div>
+      </div>
+    </section>
+
+<section class="work" id="work" aria-label="Portfolio">      <div class="section-inner">
+        
+
+        <section class="portfolio-section" aria-labelledby="technical-title">
+          <div class="project-stage">
+          <h3 id="technical-title">Technical</h3>
+          <div class="project-rail">
+          <div class="project-window">
+          <div class="project-grid">
+            <details class="project-card">
+              <summary>
+                <span class="project-preview">
+                  <span class="workflow-preview" data-flow="care" aria-hidden="true">
+                    <span class="maastro-demo">
+                      <span class="maastro-caption">ILLUSTRATIVE · NOT CLINICAL GUIDANCE</span>
+                      <span class="maastro-panel maastro-form">
+                        <span class="maastro-panel-heading">Clinician context</span>
+                        <span class="maastro-field">
+                          <span class="maastro-field-label">Care setting</span>
+                          <span class="maastro-field-box">Clinical setting</span>
+                        </span>
+                        <span class="maastro-field">
+                          <span class="maastro-field-label">Review focus</span>
+                          <span class="maastro-field-box">Select context</span>
+                        </span>
+                        <span class="maastro-choice-label">Model context</span>
+                        <span class="maastro-choices">
+                          <span class="maastro-choice"><span class="maastro-radio"></span>Diagnosis</span>
+                          <span class="maastro-choice"><span class="maastro-radio"></span>Prognosis</span>
+                        </span>
+                        <span class="maastro-next">Next</span>
+                      </span>
+                      <span class="maastro-panel maastro-process">
+                        <span class="maastro-processing-copy">Reviewing illustrative context</span>
+                        <span class="maastro-spinner"></span>
+                      </span>
+                      <span class="maastro-panel maastro-tree">
+                        <span class="maastro-tree-title">Model decision pathway</span>
+                        <span class="maastro-tree-map">
+                          <span class="maastro-tree-root">Clinician<br>context</span>
+                          <span class="maastro-tree-options">
+                            <span class="maastro-tree-branch">Pathway A</span>
+                            <span class="maastro-tree-branch">Pathway B</span>
+                          </span>
+                          <span class="maastro-tree-result">Discuss relevant options<br>with patient</span>
+                        </span>
+                        <span class="maastro-note">Illustrative only · clinician judgement required</span>
+                      </span>
+                    </span>
+                  </span>
+                </span>
+                <span class="project-label"><span class="project-heading"><strong>Maastro</strong><span>Machine learning models</span></span><span class="project-type">Professional</span></span>
+              </summary>
+              <div class="project-detail">
+                <div class="project-detail-inner">
+                <p class="project-role">AI Developer · Part-time</p>
+                <dl class="project-meta"><div><dt>Organization</dt><dd>Maastro</dd></div><div><dt>Timeline</dt><dd>Aug 2024 – Dec 2025</dd></div><div><dt>Location</dt><dd>Maastricht, Netherlands</dd></div></dl>
+                <ul class="project-bullets">
+                 <li>Reconstructed 40+ machine-learning models from a database of 90; 30+ are now used live for diagnosis and prognosis.</li>
+<li>Automated deployment (GitHub Actions, Docker, Kubernetes on Azure), cutting release time from days to minutes across 4+ research teams.</li>
+<li>Designed GDPR-compliant governance with documented data lineage, with zero compliance flags in external audits.</li>
+<li>Resolved discrepancies in high-volume datasets and explained results to non-technical stakeholders.</li>
+                </ul>
+                </div>
+              </div>
+            </details>
+            <details class="project-card">
+              <summary>
+                <span class="project-preview">
+                  <span class="workflow-preview" data-flow="privacy" aria-hidden="true">
+                    <span class="tin-demo">
+                      <span class="tin-caption">ILLUSTRATIVE · SYNTHETIC DATA</span>
+                      <span class="tin-panel tin-sheet">
+                        <span class="tin-panel-head">Spreadsheet <span class="tin-sheet-label">sample rows</span></span>
+                        <span class="tin-grid">
+                          <span class="tin-cell tin-cell-head">Company</span><span class="tin-cell tin-cell-head">Contact</span><span class="tin-cell tin-cell-head">Region</span>
+                          <span class="tin-cell tin-row"><span class="tin-entry"><span class="tin-private">Northstar</span><span class="tin-anonymous">ORG-01</span></span></span><span class="tin-cell tin-row"><span class="tin-entry"><span class="tin-private">alex@example.test</span><span class="tin-anonymous">PERSON-01</span></span></span><span class="tin-cell tin-row"><span class="tin-entry">West</span></span>
+                          <span class="tin-cell tin-row"><span class="tin-entry"><span class="tin-private">Cedar Labs</span><span class="tin-anonymous">ORG-02</span></span></span><span class="tin-cell tin-row"><span class="tin-entry"><span class="tin-private">sam@example.test</span><span class="tin-anonymous">PERSON-02</span></span></span><span class="tin-cell tin-row"><span class="tin-entry">North</span></span>
+                          <span class="tin-cell tin-row"><span class="tin-entry"><span class="tin-private">Fieldstone</span><span class="tin-anonymous">ORG-03</span></span></span><span class="tin-cell tin-row"><span class="tin-entry"><span class="tin-private">lee@example.test</span><span class="tin-anonymous">PERSON-03</span></span></span><span class="tin-cell tin-row"><span class="tin-entry">Central</span></span>
+                          <span class="tin-cell tin-row"><span class="tin-entry"><span class="tin-private">Juniper Co.</span><span class="tin-anonymous">ORG-04</span></span></span><span class="tin-cell tin-row"><span class="tin-entry"><span class="tin-private">jo@example.test</span><span class="tin-anonymous">PERSON-04</span></span></span><span class="tin-cell tin-row"><span class="tin-entry">South</span></span>
+                        </span>
+                        <span class="tin-sheet-foot">Example entries are fictional · sensitive fields anonymized</span>
+                      </span>
+                      <span class="tin-panel tin-pipeline">
+                        <span class="tin-flow-title">Anonymization pipeline</span>
+                        <span class="tin-flow">
+                          <span class="tin-flow-step"><span class="tin-flow-node">01</span><span>Spreadsheet</span></span>
+                          <span class="tin-flow-step"><span class="tin-flow-node">02</span><span>Anonymize</span></span>
+                          <span class="tin-flow-step"><span class="tin-flow-node">03</span><span>Analyze</span></span>
+                          <span class="tin-pipeline-dots"></span>
+                        </span>
+                      </span>
+                      <span class="tin-panel tin-report">
+                        <span class="tin-report-title">Illustrative summary report</span>
+                        <span class="tin-report-subtitle">Aggregated view · no personal data</span>
+                        <span class="tin-charts">
+                          <span class="tin-chart">
+                            <span class="tin-bar" style="--bar-height:38%"></span><span class="tin-bar" style="--bar-height:65%"></span><span class="tin-bar" style="--bar-height:48%"></span><span class="tin-bar" style="--bar-height:82%"></span><span class="tin-bar" style="--bar-height:58%"></span>
+                          </span>
+                          <span class="tin-chart">
+                            <svg class="tin-chart-line" viewBox="0 0 100 70" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,56 22,42 43,48 66,22 100,12"/></svg>
+                          </span>
+                        </span>
+                        <span class="tin-report-foot">Illustrative charts · synthetic data only</span>
+                      </span>
+                    </span>
+                  </span>
+                </span>
+                <span class="project-label"><span class="project-heading"><strong>Tin Capital</strong><span>Anonymisation pipeline</span></span><span class="project-type">Professional</span></span>
+              </summary>
+              <div class="project-detail">
+                <div class="project-detail-inner">
+                <p class="project-role">Business Analyst · Internship</p>
+                <dl class="project-meta"><div><dt>Organization</dt><dd>TIN Capital | European Cybersecurity Investors</dd></div><div><dt>Timeline</dt><dd>Jun 2024 – Sep 2024</dd></div><div><dt>Location</dt><dd>Amsterdam/The Hague, Netherlands</dd></div></dl>
+                <ul class="project-bullets">
+               <li>Screened 200 companies against given metrics and ran KYC and due-diligence checks on prospective investors.</li>
+<li>Built a 90%-accurate email classifier, integrated with Zapier, saving about 4 hours a week.</li>
+<li>Built a GDPR-compliant anonymisation pipeline that became the standard for sensitive data, and cut due-diligence turnaround by 40%.</li>
+<li>Maintained Pipedrive records for 150+ companies.</li>
+                </ul>
+                </div>
+              </div>
+            </details>
+             <details class="project-card">
+              <summary>
+                <span class="project-preview">
+                  <span class="workflow-preview" data-flow="gufah" aria-hidden="true">
+                    <span class="gufah-demo">
+                      <span class="concept-caption">ILLUSTRATIVE · ZERO INFRASTRUCTURE</span>
+                      <span class="gufah-panel gufah-note">
+                        <span class="gufah-panel-top"><span>gufah / notes</span><span>New note</span></span>
+                        <span class="gufah-note-title">Ideas for Sunday</span>
+                        <span class="gufah-note-copy">Pick up tea, message everyone, and remember the little things<span class="gufah-caret"></span></span>
+                      </span>
+                      <span class="gufah-panel gufah-encryption">
+                        <span class="gufah-panel-top"><span>PRIVATE BY DESIGN</span><span>02 / 03</span></span>
+                        <span class="gufah-lock"></span>
+                        <span class="gufah-encryption-title">Encrypt before sync</span>
+                        <span class="gufah-encryption-copy">Your note stays yours.</span>
+                        <span class="gufah-encryption-tag">END-TO-END ENCRYPTED</span>
+                      </span>
+                      <span class="gufah-panel gufah-repos">
+                        <span class="gufah-panel-top"><span>ZERO INFRASTRUCTURE</span><span>03 / 03</span></span>
+                        <span class="gufah-repos-title">Your GitHub repositories</span>
+                        <span class="gufah-repo"><span class="gufah-repo-mark">↗</span><span>gufah-notes</span><span class="gufah-repo-status">connected</span></span>
+                        <span class="gufah-repo"><span class="gufah-repo-mark">↗</span><span>encrypted note data</span><span class="gufah-repo-status">synced</span></span>
+                        <span class="gufah-repo"><span class="gufah-repo-mark">✓</span><span>No server to run</span></span>
+                      </span>
+                    </span>
+                  </span>
+                </span>
+                <span class="project-label"><span class="project-heading"><strong>Gufah</strong><span>Independent project</span></span><span class="project-type">Independent</span></span>
+              </summary>
+              <div class="project-detail">
+                <div class="project-detail-inner">
+                <dl class="project-meta"><div><dt>Organization</dt><dd>Independent</dd></div><div><dt>Timeline</dt><dd>Mar 2026 - Ongoing</dd></div></dl>
+                <ul class="project-bullets">
+                                   <li>A notes app with end-to-end encryption: notes are encrypted in the browser before they sync, so they stay unreadable to anyone else, including in the repository.</li>
+                  <li>Stores notes in your own GitHub repositories instead of a dedicated backend. That gives you full control of your data, multi-device sync and no server to run.</li>
+                  <li>Designed, built and shipped solo as a working MVP with a React front end and client-side cryptography. I use it daily.</li>
+                </ul>
+                </div>
+              </div>
+            </details>
+            <details class="project-card">
+              <summary>
+                <span class="project-preview">
+                  <span class="workflow-preview" data-flow="abzorb" aria-hidden="true">
+                    <span class="abzorb-demo">
+                      <span class="abzorb-caption">ILLUSTRATIVE · READING MODE</span>
+                      <span class="abzorb-panel abzorb-article">
+                        <span class="abzorb-kicker">Sample event · fictional</span>
+                        <span class="abzorb-title">An evening together</span>
+                        <span class="abzorb-copy">Join an informal evening of conversation, shared food, and new connections at 18:30. Bring something small to share if you can, and ask the host about access or dietary needs.</span>
+                        <span class="abzorb-actions">
+                          <button class="abzorb-button" type="button" disabled>Read text</button>
+                          <button class="abzorb-button abzorb-button-primary" type="button" disabled>RSVP</button>
+                        </span>
+                      </span>
+                      <span class="abzorb-panel abzorb-reading">
+                        <span class="abzorb-mode">Reading mode on</span>
+                        <span class="abzorb-kicker">An evening together</span>
+                        <ul class="abzorb-bullets">
+                          <li><strong>When</strong> at <strong>18</strong>:30, for an <strong>in</strong>formal <strong>gather</strong>ing.</li>
+                          <li><strong>Bring</strong> something <strong>small</strong> to <strong>share</strong>, if you can.</li>
+                          <li><strong>Ask</strong> the <strong>host</strong> about <strong>access</strong> or <strong>diet</strong>ary needs.</li>
+                        </ul>
+                        <span class="abzorb-actions">
+                          <button class="abzorb-button abzorb-button-primary" type="button" disabled>RSVP</button>
+                        </span>
+                      </span>
+                      <span class="abzorb-panel abzorb-summary">
+                        <span class="abzorb-summary-head">
+                          <span class="abzorb-title">AI summary</span>
+                          <span class="abzorb-ai">AI concept</span>
+                        </span>
+                        <span class="abzorb-summary-card">
+                          <span class="abzorb-kicker">The essentials</span>
+                          <span class="abzorb-summary-line"></span>
+                          <span class="abzorb-summary-line"></span>
+                          <span class="abzorb-summary-line"></span>
+                          <span class="abzorb-summary-line"></span>
+                          <span class="abzorb-summary-takeaway">18:30 · bring a shareable · check access and dietary needs</span>
+                        </span>
+                        <span class="abzorb-actions">
+                          <button class="abzorb-button" type="button" disabled>Read text</button>
+                        </span>
+                      </span>
+                    </span>
+                  </span>
+                </span>
+                <span class="project-label"><span class="project-heading"><strong>Abzorb</strong><span>Independent project</span></span><span class="project-type">Independent</span></span>
+              </summary>
+              <div class="project-detail">
+                <div class="project-detail-inner">
+                <dl class="project-meta"><div><dt>Organization</dt><dd>Independent</dd></div><div><dt>Timeline</dt><dd>Apr 2025 - Jun 2025</dd></div></dl>
+                <ul class="project-bullets">
+                                   <li>Combines several reading-support techniques in one flow: short chunked bullets, bionic-style emphasis, read-aloud and an AI summary, so people can choose what works for them.</li>
+                  <li>Grounded in research on reading accessibility and cognitive load, which favours short chunks, clear structure and more than one way to take in the same information.</li>
+                  <li>Turns a dense event page into two quick steps: grasp the essentials, then RSVP.</li>
+                </ul>
+                </div>
+              </div>
+            </details>
+           
+            <details class="project-card">
+              <summary>
+                <span class="project-preview">
+                  <span class="workflow-preview" data-flow="tgtg" aria-hidden="true">
+                    <span class="tgtg-demo">
+                      <span class="concept-caption">ILLUSTRATIVE · PERSONALIZED ALERTS</span>
+                      <span class="tgtg-phone">
+                        <span class="tgtg-speaker"></span>
+                        <span class="tgtg-screen">
+                          <span class="tgtg-view tgtg-soldout">
+                            <span class="tgtg-app-name">Too Good To Go</span>
+                            <span class="tgtg-nearby">Surprise bags near you</span>
+                            <span class="tgtg-bag"><span class="tgtg-bag-name">Bakery surprise bag</span><span class="tgtg-bag-state">Sold out</span></span>
+                            <span class="tgtg-bag"><span class="tgtg-bag-name">Market surprise bag</span><span class="tgtg-bag-state">Sold out</span></span>
+                          </span>
+                          <span class="tgtg-view tgtg-alert">
+                            <span class="tgtg-app-name">Too Good To Go</span>
+                            <span class="tgtg-alert-label">NEXT TIME · YOUR ALERT</span>
+                            <span class="tgtg-notification">
+                              <span class="tgtg-notification-title">A bag from your usual bakery is back</span>
+                              <span class="tgtg-notification-copy">A surprise bag just became available nearby.</span>
+                            </span>
+                          </span>
+                          <span class="tgtg-view tgtg-saved">
+                            <span class="tgtg-app-name">Too Good To Go</span>
+                            <span class="tgtg-saved-mark">✓</span>
+                            <span class="tgtg-saved-title">Bag saved</span>
+                            <span class="tgtg-saved-copy">Food rescued. Money saved.<br>No constant checking.</span>
+                          </span>
+                        </span>
+                      </span>
+                    </span>
+                  </span>
+                </span>
+                <span class="project-label"><span class="project-heading"><strong>Too Good To Go Terminal</strong><span>Independent project</span></span><span class="project-type">Independent</span></span>
+              </summary>
+              <div class="project-detail">
+                <div class="project-detail-inner">
+                <dl class="project-meta"><div><dt>Organization</dt><dd>Independent</dd></div><div><dt>Timeline</dt><dd>Aug 2025 - Sep 2025</dd></div></dl>
+                <ul class="project-bullets">
+                            <li>A Flask and PostgreSQL service that polls a third-party API on a schedule, normalises the data, and sends email alerts when a relevant bag appears.</li>
+                  <li>Built to save food and money: it surfaces the right bag at the right moment, so nobody has to keep refreshing the app.</li>
+                  <li>Shelved after Too Good To Go launched its own notification system, which covered the same need.</li>
+                </ul>
+                </div>
+              </div>
+            </details>
+          </div>
+          </div>
+          </div>
+          </div>
+          <div class="project-scroll-space" aria-hidden="true"></div>
+        </section>
+
+        <section class="portfolio-section" aria-labelledby="academic-title">
+          <div class="project-stage">
+          <h3 id="academic-title">Academic</h3>
+          <div class="project-rail">
+          <div class="project-window">
+          <div class="project-grid">
+
+             <details class="project-card">
+              <summary>
+                <span class="project-preview">
+                  <span class="workflow-preview" data-flow="infrasound" aria-hidden="true">
+                    <span class="infrasound-demo">
+                      <span class="concept-caption">ILLUSTRATIVE · INFRASOUND BELOW 20 HZ</span>
+                      <span class="infrasound-panel">
+                        <span class="infrasound-screen infrasound-screen-capture">
+                          <span class="infrasound-head">
+                            <span>01 · FIELD RECORDING</span>
+                            <span class="infrasound-range">0.5–20 HZ</span>
+                          </span>
+                          <span class="infrasound-stage-title">Capture the low-frequency signal.</span>
+                          <span class="infrasound-chart">
+                            <span class="infrasound-axis"><span>20</span><span>10</span><span>0.5 Hz</span></span>
+                            <span>
+                              <span class="infrasound-plot">
+                                <svg viewBox="0 0 210 75" preserveAspectRatio="none" aria-hidden="true">
+                                  <path class="infrasound-gridline" d="M0 18.5h210M0 37.5h210M0 56.5h210M42 0v75M84 0v75M126 0v75M168 0v75"/>
+                                  <g class="infrasound-spectrum-data">
+                                    <path class="infrasound-rumble-band" d="M2 57c13-2 17 2 28 0s15 1 25-2 15 1 26-1 14 2 26-1 15 1 26-2 15 2 26-1 16 1 23-2v8c-10 2-17-1-26 2s-17-1-25 2-17-1-25 2-18-1-26 1-17-1-26 2-18-2-26 1-18-1-27 2Z"/>
+                                    <path class="infrasound-rumble-harmonic" d="M4 48c12-1 17 1 27-1s18 1 27-1 18 1 27-1 18 1 27-1 18 1 27-1 18 1 27-1 18 0 36-2M5 38c12 1 18-1 27 1s18-1 27 1 18-2 27 0 18-1 27 1 18-1 27 0 18-1 27 1 18-1 36 0"/>
+                                    <g class="infrasound-noise">
+                                      <rect x="12" y="13" width="4" height="4"/><rect x="27" y="26" width="3" height="3"/><rect x="44" y="8" width="5" height="4"/><rect x="58" y="22" width="3" height="4"/>
+                                      <rect x="73" y="11" width="4" height="3"/><rect x="88" y="29" width="5" height="4"/><rect x="105" y="15" width="3" height="4"/><rect x="119" y="7" width="5" height="3"/>
+                                      <rect x="135" y="24" width="4" height="4"/><rect x="151" y="12" width="3" height="5"/><rect x="166" y="28" width="5" height="3"/><rect x="185" y="16" width="4" height="4"/>
+                                    </g>
+                                  </g>
+                                </svg>
+                              </span>
+                              <span class="infrasound-time">TIME →</span>
+                            </span>
+                          </span>
+                          <span class="infrasound-screen-note">Spectrogram captured · ready for analysis</span>
+                        </span>
+                        <span class="infrasound-screen infrasound-screen-thinking">
+                          <span class="infrasound-head"><span>02 · MODEL INFERENCE</span><span class="infrasound-range">THINKING</span></span>
+                          <span class="infrasound-stage-title">Send the spectrogram through a model.</span>
+                          <span class="infrasound-stage-copy">Low-frequency patterns are compared with the learned signal.</span>
+                          <span class="infrasound-model-flow">
+                            <span class="infrasound-mini-spectrum" aria-hidden="true">
+                              <i style="--bar-height:35%"></i><i style="--bar-height:55%"></i><i style="--bar-height:42%"></i><i style="--bar-height:82%"></i><i style="--bar-height:60%"></i><i style="--bar-height:93%"></i><i style="--bar-height:70%"></i>
+                            </span>
+                            <span class="infrasound-flow-arrow" aria-hidden="true">→</span>
+                            <span class="infrasound-thinking-model">
+                              <span class="infrasound-thinking-mark">✳</span>
+                              <span class="infrasound-thinking-name">Acoustic model</span>
+                            </span>
+                          </span>
+                          <span class="infrasound-thinking-state">ANALYZING · RUMBLE / NOISE</span>
+                        </span>
+                        <span class="infrasound-screen infrasound-screen-output">
+                          <span class="infrasound-head"><span>03 · MODEL OUTPUT</span><span class="infrasound-range">CLASSIFIED</span></span>
+                          <span class="infrasound-stage-title">A signal, not just noise.</span>
+                          <span class="infrasound-output-intro">The low-frequency pattern most closely matches:</span>
+                          <span class="infrasound-output-result">
+                            <svg class="infrasound-elephant" viewBox="0 0 44 30" fill="none" aria-hidden="true">
+                              <path d="M8 22V12c0-5 5-8 13-8h8c6 0 10 4 10 10v5c0 3-2 5-5 5h-2v-8c0-2-2-3-4-3h-7v11h-4V14h-5v10h-4v-2Z" fill="currentColor"/>
+                              <path d="M35 10c-1 4-1 8 2 10 2 1 4-1 4-3v-4c0-3-2-5-5-5" fill="#f5f6ef" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                              <circle cx="32" cy="9" r="1" fill="#fff"/>
+                              <path d="M11 23v4m9-4v4m11-4v4M5 12c-3 0-3-5 1-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                            </svg>
+                            <span><strong class="infrasound-output-name">Elephant rumble</strong><small class="infrasound-output-confidence">Infrasound pattern · illustrative match</small></span>
+                          </span>
+                          <span class="infrasound-output-noise"><span>Environmental noise</span><small>Distinguished</small></span>
+                        </span>
+                      </span>
+                    </span>
+                  </span>
+                </span>
+                <span class="project-label"><span class="project-heading"><strong>Elephant Infrasound Vocalisation Analysis</strong><span>Maastricht University</span></span><span class="project-type">Academic</span></span>
+              </summary>
+              <div class="project-detail">
+                <div class="project-detail-inner">
+                  <p class="project-role">Research Analyst · Internship</p>
+                  <dl class="project-meta"><div><dt>Organization</dt><dd>TU/e and Libema Group</dd></div><div><dt>Timeline</dt><dd>Jan 2026 – Jun 2026</dd></div><div><dt>Location</dt><dd>Maastricht, Netherlands</dd></div></dl>
+                  <ul class="project-bullets">
+                   <li>Studied elephant infrasound through controlled experiments and 160+ hours of field recordings across two sites.</li>
+<li>Compared two classifiers, rule-based and embedding-based, at separating elephant rumbles from noise in three noise environments, using spectrograms and Bayesian methods to catch rare events.</li>
+<li>Found a critical failure mode where one approach degraded under specific noise, and recommended ways to reduce deployment risk.</li>
+<li>Worked across Maastricht University, TU/e and Libema Group.</li>
+                  </ul>
+                </div>
+              </div>
+            </details>
+            <details class="project-card">
+              <summary>
+                <span class="project-preview">
+                  <span class="workflow-preview" data-flow="vision" aria-hidden="true">
+                    <span class="vision-demo">
+                      <span class="concept-caption">ILLUSTRATIVE · REGION-SPECIFIC TUNING</span>
+                      <span class="vision-panel">
+                        <span class="vision-screen vision-screen-detect">
+                          <span class="vision-panel-head"><span>CAMERA 01 · ENTRY BORDER</span><span class="vision-live">Motion detected</span></span>
+                          <span class="vision-screen-title">Something crossed the frame edge.</span>
+                          <span class="vision-camera-frame">
+                            <span class="vision-zone-label vision-zone-label-edge">Sensitive border</span>
+                            <span class="vision-bug">
+                              <span class="vision-bug-halo"></span>
+                              <svg viewBox="0 0 32 28" fill="none" aria-hidden="true">
+                                <path d="M10 8 6 4m16 4 4-4M9 15H3m26 0h-6M10 21l-4 4m16-4 4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                                <ellipse cx="16" cy="16" rx="8" ry="10" fill="#788b58"/>
+                                <path d="M16 7v18" stroke="#f5f6ef" stroke-width="1.3"/>
+                                <circle cx="16" cy="6" r="3" fill="#495334"/>
+                                <path d="M14 4 12 1m6 3 2-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                              </svg>
+                            </span>
+                          </span>
+                          <span class="vision-screen-note">Bug entered · edge motion confirmed</span>
+                        </span>
+                        <span class="vision-screen vision-screen-thinking">
+                          <span class="vision-panel-head"><span>REGION-SPECIFIC MODEL</span><span class="vision-live">Analyzing</span></span>
+                          <span class="vision-screen-title">Think differently at the border.</span>
+                          <span class="vision-screen-copy">Tune each area for the motion it needs to detect.</span>
+                          <span class="vision-processing-card">
+                            <span class="vision-processing-mark">✳</span>
+                            <span><strong class="vision-processing-title">Motion model · thinking</strong><small class="vision-processing-copy">Compare edge entry with stable interior movement.</small></span>
+                          </span>
+                          <span class="vision-zone-settings">
+                            <span class="vision-zone-setting">
+                              <strong>Border · higher sensitivity</strong>
+                              <span>Stable inward / outward detection</span>
+                            </span>
+                            <span class="vision-zone-setting vision-zone-setting-interior">
+                              <strong>Interior · separate tuning</strong>
+                              <span>Stable object tracking</span>
+                            </span>
+                          </span>
+                        </span>
+                        <span class="vision-screen vision-screen-output">
+                          <span class="vision-panel-head"><span>CAMERA 01 · MODEL OUTPUT</span><span class="vision-live">Identified</span></span>
+                          <span class="vision-screen-title">Tracked inside the frame.</span>
+                          <span class="vision-camera-frame">
+                            <span class="vision-zone-label vision-zone-label-interior">Interior tracking</span>
+                            <span class="vision-bug">
+                              <svg viewBox="0 0 32 28" fill="none" aria-hidden="true">
+                                <path d="M10 8 6 4m16 4 4-4M9 15H3m26 0h-6M10 21l-4 4m16-4 4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                                <ellipse cx="16" cy="16" rx="8" ry="10" fill="#788b58"/>
+                                <path d="M16 7v18" stroke="#f5f6ef" stroke-width="1.3"/>
+                                <circle cx="16" cy="6" r="3" fill="#495334"/>
+                                <path d="M14 4 12 1m6 3 2-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                              </svg>
+                            </span>
+                            <span class="vision-output-box"></span>
+                            <span class="vision-output-tag">LADYBUG</span>
+                          </span>
+                          <span class="vision-output-result"><span>Object identified</span><small>Illustrative model result</small></span>
+                        </span>
+                      </span>
+                    </span>
+                  </span>
+                </span>
+                <span class="project-label"><span class="project-heading"><strong>Numbering Nature - Biodiversity Monitoring</strong><span>MIT</span></span><span class="project-type">Academic</span></span>
+              </summary>
+              <div class="project-detail">
+                <div class="project-detail-inner">
+<dl class="project-meta"><div><dt>Organization</dt><dd>MIT - AMS Institute</dd></div><div><dt>Timeline</dt><dd>Aug 2026 - Sep 2026</dd></div><div><dt>Location</dt><dd>Amsterdam, Netherlands</dd></div></dl>                  <ul class="project-bullets">
+                    <li>Summer school project at the MIT AMS Institute on automated insect monitoring: detecting insects in field video, building on the open-source bplusplus pipeline.</li>
+                    <li>Proposed treating the edge of the frame differently from the middle, with a border zone of its own dynamic parameters, so insects entering the frame are caught while moving flowers aren't mistaken for bugs.</li>
+                    <li>Tuned history, stability, sensitivity and blob size separately for each zone, balancing missed insects against false alarms.</li>
+                  </ul>
+                </div>
+              </div>
+            </details>
+            <details class="project-card">
+              <summary>
+                <span class="project-preview">
+                  <span class="workflow-preview" data-flow="systems" aria-hidden="true">
+                    <span class="game-theory-demo">
+                      <span class="game-theory-caption">GAME THEORY · SHARED RESOURCES</span>
+                      <svg class="game-tree-bg game-tree-bg-left" viewBox="0 0 100 130" aria-hidden="true">
+                        <path d="M47 130 51 84 42 57m9 27 12-36m-12 21-20-19m20 6 23-22" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+                        <g fill="currentColor">
+                          <circle cx="31" cy="45" r="13"/><circle cx="63" cy="67" r="15"/><circle cx="67" cy="30" r="17"/>
+                          <circle cx="42" cy="70" r="14"/><circle cx="77" cy="52" r="12"/>
+                        </g>
+                      </svg>
+                      <svg class="game-tree-bg game-tree-bg-right" viewBox="0 0 100 130" aria-hidden="true">
+                        <path d="M47 130 51 84 42 57m9 27 12-36m-12 21-20-19m20 6 23-22" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+                        <g fill="currentColor">
+                          <circle cx="31" cy="45" r="13"/><circle cx="63" cy="67" r="15"/><circle cx="67" cy="30" r="17"/>
+                          <circle cx="42" cy="70" r="14"/><circle cx="77" cy="52" r="12"/>
+                        </g>
+                      </svg>
+                      <span class="game-theory-panel">
+                        <span class="game-theory-head"><span>RESOURCE CHOICES</span><span class="game-theory-live">Illustrative model</span></span>
+                        <svg class="game-theory-diagram" viewBox="0 0 260 140" aria-label="Two choices lead to sustainable or depleted outcomes">
+                          <path class="game-theory-link" d="M118 36 79 48M142 36l39 12M65 84l5 22M84 82c19 11 31 16 42 23M176 82c-19 11-31 16-42 23M195 84l-5 22"/>
+                          <circle class="game-theory-node game-theory-node-shared" cx="130" cy="21" r="16"/>
+                          <text class="game-theory-small" x="130" y="23">SHARED</text>
+                          <circle class="game-theory-token" cx="130" cy="41" r="3"/>
+                          <circle class="game-theory-node game-theory-node-cooperate" cx="65" cy="64" r="22"/>
+                          <text class="game-theory-text" x="65" y="63">Cooperate</text>
+                          <text class="game-theory-small" x="65" y="72">restrain use</text>
+                          <circle class="game-theory-node game-theory-node-harvest" cx="195" cy="64" r="22"/>
+                          <text class="game-theory-text" x="195" y="63">Overuse</text>
+                          <text class="game-theory-small" x="195" y="72">take more</text>
+                          <rect class="game-theory-outcome game-theory-outcome-sustainable" x="17" y="106" width="96" height="25" rx="4"/>
+                          <text class="game-theory-text" x="65" y="122">Sustainable</text>
+                          <rect class="game-theory-outcome game-theory-outcome-depleted" x="147" y="106" width="96" height="25" rx="4"/>
+                          <text class="game-theory-text" x="195" y="122">Depleted</text>
+                        </svg>
+                      </span>
+                    </span>
+                  </span>
+                </span>
+                <span class="project-label"><span class="project-heading"><strong>Game Theory &amp; Environmental Problems</strong><span>Aarhus</span></span><span class="project-type">Academic</span></span>
+              </summary>
+                           <div class="project-detail">
+                <div class="project-detail-inner">
+<dl class="project-meta"><div><dt>Organization</dt><dd>Aarhus University</dd></div><div><dt>Timeline</dt><dd>Jul 2025 - Aug 2025</dd></div><div><dt>Location</dt><dd>Aarhus, Denmark</dd></div></dl>                  <ul class="project-bullets">
+                    <li>Studied why individuals and firms overuse shared resources even when cooperating would leave everyone better off, and what makes cooperation hold.</li>
+                    <li>Covered the policy tools that change those incentives, including carbon pricing, environmental policy and sustainability metrics.</li>
+                    <li>Learned to read environmental problems as incentive design: how rules and rewards can make the individually rational choice the sustainable one.</li>
+                  </ul>
+                </div>
+              </div>
+            </details>
+           
+            <details class="project-card">
+              <summary>
+                <span class="project-preview">
+                  <span class="workflow-preview" data-flow="study" aria-hidden="true">
+                    <span class="chess-demo">
+                      <span class="chess-caption">SBE MINOR · BOT MATCH</span>
+                      <span class="chess-panel">
+                        <span class="chess-bots">
+                          <span class="chess-bot">
+                            <svg class="chess-bot-icon" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+                              <rect x="4" y="7" width="20" height="16" rx="5" stroke="currentColor" stroke-width="1.5"/>
+                              <path d="M14 3v4m-5 8h.1m9.8 0h.1M10 19h8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                              <circle cx="14" cy="3" r="1.5" fill="currentColor"/>
+                            </svg>
+                            <span><strong class="chess-bot-label">WHITE BOT</strong><small class="chess-bot-state chess-bot-state-white"><span class="chess-state-white-active">Thinking…</span><span class="chess-state-white-wait">Move complete</span></small></span>
+                          </span>
+                          <span class="chess-bot">
+                            <svg class="chess-bot-icon" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+                              <rect x="4" y="7" width="20" height="16" rx="5" stroke="currentColor" stroke-width="1.5"/>
+                              <path d="M14 3v4m-5 8h.1m9.8 0h.1M10 19h8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                              <circle cx="14" cy="3" r="1.5" fill="currentColor"/>
+                            </svg>
+                            <span><strong class="chess-bot-label">BLACK BOT</strong><small class="chess-bot-state chess-bot-state-black"><span class="chess-state-black-active">Thinking…</span><span class="chess-state-black-wait">Move complete</span></small></span>
+                          </span>
+                        </span>
+                        <span class="chess-board" aria-label="Illustrative chessboard with two bots playing">
+                          <span class="chess-piece chess-piece-black-back chess-file-a">♜</span><span class="chess-piece chess-piece-black-back chess-file-c">♝</span><span class="chess-piece chess-piece-black-back chess-file-d">♛</span><span class="chess-piece chess-piece-black-back chess-file-e">♚</span><span class="chess-piece chess-piece-black-back chess-file-f">♝</span><span class="chess-piece chess-piece-black-back chess-file-g">♞</span><span class="chess-piece chess-piece-black-back chess-file-h">♜</span>
+                          <span class="chess-piece chess-piece-black-pawn chess-file-a">♟</span><span class="chess-piece chess-piece-black-pawn chess-file-c">♟</span><span class="chess-piece chess-piece-black-pawn chess-file-e">♟</span><span class="chess-piece chess-piece-black-pawn chess-file-g">♟</span>
+                          <span class="chess-square-highlight chess-highlight-white"></span><span class="chess-square-highlight chess-highlight-black"></span>
+                          <span class="chess-piece chess-piece-light chess-move-white">♘</span>
+                          <span class="chess-piece chess-move-black">♞</span>
+                          <span class="chess-piece chess-piece-light chess-piece-white-pawn chess-file-b">♟</span><span class="chess-piece chess-piece-light chess-piece-white-pawn chess-file-d">♟</span><span class="chess-piece chess-piece-light chess-piece-white-pawn chess-file-f">♟</span><span class="chess-piece chess-piece-light chess-piece-white-pawn chess-file-h">♟</span>
+                          <span class="chess-piece chess-piece-light chess-piece-white-back chess-file-a">♖</span><span class="chess-piece chess-piece-light chess-piece-white-back chess-file-c">♗</span><span class="chess-piece chess-piece-light chess-piece-white-back chess-file-d">♕</span><span class="chess-piece chess-piece-light chess-piece-white-back chess-file-e">♔</span><span class="chess-piece chess-piece-light chess-piece-white-back chess-file-f">♗</span><span class="chess-piece chess-piece-light chess-piece-white-back chess-file-h">♖</span>
+                        </span>
+                        <span class="chess-footer">ALTERNATING MOVES · ILLUSTRATIVE GAME</span>
+                      </span>
+                    </span>
+                  </span>
+                </span>
+                <span class="project-label"><span class="project-heading"><strong>BSc. Data Science &amp; AI</strong><span>Maastricht University</span></span><span class="project-type">Academic</span></span>
+              </summary>
+              <div class="project-detail">
+                <div class="project-detail-inner">
+<dl class="project-meta"><div><dt>Organization</dt><dd>Maastricht University</dd></div><div><dt>Timeline</dt><dd>Aug 2022 - Jun 2026</dd></div><div><dt>Location</dt><dd>Maastricht, Netherlands</dd></div></dl>                  <ul class="project-bullets"><li>BSc in Data Science and AI, with coursework spanning AI agents, deep learning, NLP and CNNs, plus statistics, decision modelling, databases, operations research and control theory.</li>
+                    <li>Applied that coursework in a steady run of hands-on AI bot projects, learning by building and testing them rather than only studying the theory.</li>
+                    <li>Minor in Entrepreneurship at the School of Business and Economics (Sep 2025 – Jan 2026), adding a commercial lens to the technical degree.</li></ul>
+                </div>
+              </div>
+            </details>
+          </div>
+          </div>
+          </div>
+          </div>
+          <div class="project-scroll-space" aria-hidden="true"></div>
+        </section>
+
+        <section class="portfolio-section" aria-labelledby="creative-title">
+          <div class="project-stage">
+          <h3 id="creative-title">Creative</h3>
+          <div class="project-rail">
+          <div class="project-window">
+          <div class="project-grid">
+      
+            <details class="project-card">
+              <summary>
+                <span class="project-preview">
+                  <span class="project-image-gallery" aria-hidden="true">
+                    <img class="is-active" src="assets/projects/textiles/Screenshot%202026-11-06%20at%2022.49.46.png" alt="" decoding="async">
+                  </span>
+                </span>
+                <span class="project-label"><span class="project-heading"><strong>Fabric Waste Projects</strong><span>Independent creative work</span></span><span class="project-type">Independent</span></span>
+              </summary>
+              <div class="project-detail">
+                <div class="project-detail-inner">
+                <dl class="project-meta"><div><dt>Organization</dt><dd>Independent</dd></div><div><dt>Timeline</dt><dd>2022 Onwards</dd></div></dl>
+                <ul class="project-bullets">
+                  <li>Taught myself to sew and made 20+ pieces, all from old fabric waste: pants, jackets, skirts and more.</li>
+                  <li>Developed a Frankenstein aesthetic, stitching mismatched offcuts and discarded garments into new pieces so usable fabric stays out of the bin.</li>
+                  <li>Mixed making with mending: altering and fixing garments, restoring worn ones and painting directly on fabric.</li>
+                </ul>                </div>
+              </div>
+            </details>
+              <details class="project-card">
+              <summary>
+                <span class="project-preview">
+                  <span class="project-image-gallery" aria-hidden="true">
+                    <img class="is-active" src="assets/projects/misc/1.png" alt="" decoding="async">
+                    <img src="assets/projects/misc/2.png" alt="" decoding="async">
+                    <img src="assets/projects/misc/4.png" alt="" decoding="async">
+                  </span>
+                </span>
+                <span class="project-label"><span class="project-heading"><strong>Laminate &amp; Glass</strong><span>Independent creative work</span></span><span class="project-type">Independent</span></span>
+              </summary>
+              <div class="project-detail">
+                <div class="project-detail-inner">
+                <dl class="project-meta"><div><dt>Organization</dt><dd>Independent</dd></div><div><dt>Timeline</dt><dd>2025 Onwards</dd></div></dl>
+                <ul class="project-bullets"> <li>Turned excess laminate waste into a sturdy coffee table with built-in storage that assembles without screws and comes apart just as easily.</li>
+                  <li>Made smaller pieces from the offcuts, including coasters, so very little of the material went unused.</li>
+                  <li>Turned roughly 10 kg of wine bottles into drinking glasses for everyday use at home.</li></ul>
+                </div>
+              </div>
+            </details>
+            <details class="project-card">
+              <summary>
+                <span class="project-preview">
+                  <span class="project-image-gallery" aria-hidden="true">
+                    <img class="is-active" src="assets/projects/paper/Screenshot%202026-11-06%20at%2022.49.23.png" alt="" decoding="async">
+                    <img src="assets/projects/paper/Screenshot%202026-11-06%20at%2022.49.31.png" alt="" decoding="async">
+                    <img src="assets/projects/paper/Screenshot%202026-11-06%20at%2022.49.38.png" alt="" decoding="async">
+                  </span>
+                </span>
+                <span class="project-label"><span class="project-heading"><strong>Paper Pulp Products</strong><span>Independent creative work</span></span><span class="project-type">Independent</span></span>
+              </summary>
+              <div class="project-detail">
+                <div class="project-detail-inner">
+                <dl class="project-meta"><div><dt>Organization</dt><dd>Independent</dd></div><div><dt>Timeline</dt><dd>2025 Onwards</dd></div></dl>
+                <ul class="project-bullets"><li>Turned roughly 5 kg of paper waste into pulp and then into useful objects: handmade paper, trays, a key holder, jewellery, a pencil stand and a lamp stand.</li>
+                  <li>Made the paper from recycled waste and the sawdust left over from my laminate table, and now draw and journal on it.</li>
+                  <li>The pulp objects use no added bonding materials, and the ones I made first have held up for well over a year.</li></ul>
+                </div>
+              </div>
+            </details>
+          
+          </div>
+          </div>
+          </div>
+          </div>
+          <div class="project-scroll-space" aria-hidden="true"></div>
+        </section>
+      </div>
+    </section>
+
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Let's work <em> together</em></h2>
+      <div class="contact-links" aria-label="Contact and social profiles">
+        <a href="mailto:ritwiksrivastava@proton.me" aria-label="Email Ritwik" title="Email">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.75 5.5h16.5A1.75 1.75 0 0 1 22 7.25v9.5a1.75 1.75 0 0 1-1.75 1.75H3.75A1.75 1.75 0 0 1 2 16.75v-9.5A1.75 1.75 0 0 1 3.75 5.5Zm.18 2 7.49 5.57a1 1 0 0 0 1.16 0l7.49-5.57H3.93Zm16.07 9V9.38l-6.23 4.63a3 3 0 0 1-3.54 0L4 9.38v7.12c0 .28.22.5.5.5h15a.5.5 0 0 0 .5-.5Z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/ritwiksrivastavaa/" aria-label="LinkedIn profile" title="LinkedIn" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.2 3.5a2.2 2.2 0 1 1-.02 4.4 2.2 2.2 0 0 1 .02-4.4ZM3.4 9h3.7v11.5H3.4V9Zm5.9 0h3.55v1.57h.05A3.9 3.9 0 0 1 16.4 8.5c3.78 0 4.48 2.49 4.48 5.73v6.27h-3.7v-5.56c0-1.33-.02-3.04-1.86-3.04-1.86 0-2.14 1.45-2.14 2.94v5.66H9.3V9Z"/></svg>
+        </a>
+        <a href="https://github.com/ritwyck" aria-label="GitHub profile" title="GitHub" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.56.1.76-.24.76-.54v-2.08c-3.1.68-3.76-1.31-3.76-1.31-.51-1.3-1.24-1.65-1.24-1.65-1.01-.69.08-.68.08-.68 1.12.08 1.7 1.15 1.7 1.15.99 1.7 2.6 1.21 3.23.93.1-.72.39-1.21.7-1.49-2.47-.28-5.06-1.23-5.06-5.49 0-1.21.43-2.2 1.15-2.98-.12-.28-.5-1.42.11-2.95 0 0 .94-.3 3.05 1.14a10.6 10.6 0 0 1 5.55 0c2.11-1.44 3.04-1.14 3.04-1.14.61 1.53.23 2.67.11 2.95.72.78 1.15 1.77 1.15 2.98 0 4.27-2.6 5.2-5.08 5.48.4.35.75 1.02.75 2.06v3.08c0 .3.2.65.77.54A11.1 11.1 0 0 0 12 .9Z"/></svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p><span class="footer-mark" aria-hidden="true" lang="sa">ऋ</span> © <span id="year"></span> ritwyck</p>    <p>be annoying for peace!!</p>
+  </footer>
+
+  <script>
+    document.querySelector("#year").textContent = String(new Date().getFullYear());
+        if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.querySelectorAll(".collage-tile video").forEach((v) => { v.removeAttribute("autoplay"); v.pause(); });
+    }
+    const heroEl = document.querySelector(".hero");
+    if (heroEl && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      heroEl.addEventListener("pointermove", (e) => {
+        const r = heroEl.getBoundingClientRect();
+        heroEl.style.setProperty("--mx", ((e.clientX - r.left) / r.width - .5).toFixed(3));
+        heroEl.style.setProperty("--my", ((e.clientY - r.top) / r.height - .5).toFixed(3));
+      });
+      heroEl.addEventListener("pointerleave", () => {
+        heroEl.style.setProperty("--mx", 0);
+        heroEl.style.setProperty("--my", 0);
+      });
+    }
+    window.addEventListener("scroll", () => {
+      const max = document.documentElement.scrollHeight - innerHeight;
+      document.documentElement.style.setProperty("--p", max > 0 ? scrollY / max : 0);
+    }, { passive: true });
+   
+
+    const projectCards = document.querySelectorAll(".project-card");
+        document.querySelectorAll(".project-grid").forEach((grid) => {
+      grid.querySelector(".project-card")?.setAttribute("open", "");
+    });
+    const workflowStages = {
+      care: ["Sensitive data", "Model review", "Clinical insight"],
+      privacy: ["Review", "Anonymize", "Share safely"],
+      prototype: ["Observe", "Explore", "Refine"],
+      gufah: ["Capture note", "Encrypt", "GitHub repos"],
+      tgtg: ["Sold out", "Personal alert", "Bag saved"],
+      vision: ["Frame edge", "Detect motion", "Track inside"],
+      systems: ["Shared goals", "Model", "Outcome"],
+      infrasound: ["Infrasound", "Model", "Rumble / noise"],
+      study: ["Question", "Explore", "Present"],
+    };
+    document.querySelectorAll(".workflow-preview").forEach((preview) => {
+      if (["care", "privacy", "abzorb", "gufah", "tgtg", "vision", "infrasound", "systems", "study"].includes(preview.dataset.flow)) return;
+
+      const stages = workflowStages[preview.dataset.flow] || workflowStages.prototype;
+      const caption = document.createElement("span");
+      caption.className = "workflow-caption";
+      caption.textContent = "ILLUSTRATIVE WORKFLOW";
+
+      const board = document.createElement("span");
+      board.className = "workflow-board";
+      const boardTop = document.createElement("span");
+      boardTop.className = "workflow-board-top";
+      const boardLabel = document.createElement("span");
+      boardLabel.textContent = "FLOW STUDY";
+      const status = document.createElement("span");
+      status.className = "workflow-status";
+      status.textContent = "Simulated";
+      boardTop.append(boardLabel, status);
+
+      const stageList = document.createElement("span");
+      stageList.className = "workflow-stages";
+      stages.forEach((label, index) => {
+        const stage = document.createElement("span");
+        stage.className = "workflow-stage";
+        const node = document.createElement("span");
+        node.className = "workflow-node";
+        node.textContent = String(index + 1).padStart(2, "0");
+        const stageLabel = document.createElement("span");
+        stageLabel.className = "workflow-stage-label";
+        stageLabel.textContent = label;
+        stage.append(node, stageLabel);
+        stageList.append(stage);
+      });
+
+      const foot = document.createElement("span");
+      foot.className = "workflow-foot";
+      const progress = document.createElement("span");
+      progress.className = "workflow-progress";
+      foot.append(progress);
+      board.append(boardTop, stageList, foot);
+      preview.append(caption, board);
+    });
+    const projectMedia = {
+      care: {
+        video: "assets/projects/maastro/maastro.mp4",
+        poster: "assets/projects/maastro/maastro.poster.jpg",
+        logo: "assets/projects/maastro/maastro1.jpg",
+      },
+      privacy: {
+        video: "assets/projects/tin-capital/tin capital.mp4",
+        poster: "assets/projects/tin-capital/tin capital.poster.jpg",
+        logo: "assets/projects/tin-capital/tin cap.jpg",
+      },
+      abzorb: {
+        video: "assets/projects/abzorb/abzorb.mp4",
+        poster: "assets/projects/abzorb/abzorb.poster.jpg",
+      },
+      gufah: {
+        video: "assets/projects/gufah/gufah.mp4",
+        poster: "assets/projects/gufah/gufah.poster.jpg",
+      },
+      tgtg: {
+        video: "assets/projects/too-good-to-go-terminal/TGTG.mp4",
+        poster: "assets/projects/too-good-to-go-terminal/TGTG.poster.jpg",
+      },
+      vision: {
+        video: "assets/projects/computer-vision/ams.mp4",
+        poster: "assets/projects/computer-vision/ams.poster.jpg",
+        logo: "assets/projects/computer-vision/ams mit.jpg",
+      },
+            systems: {
+        image: "assets/projects/game-theory-environmental-problems/game theory.png",
+        logo: "assets/projects/game-theory-environmental-problems/aarhus.jpg",
+      },
+      infrasound: {
+        video: "assets/projects/infrasound-thesis/thesis.mp4",
+        poster: "assets/projects/infrasound-thesis/thesis.poster.jpg",
+        logo: "assets/projects/infrasound-thesis/thesis.jpg",
+      },
+      study: {
+        video: "assets/projects/sbe-minor/AI Bots.mp4",
+        poster: "assets/projects/sbe-minor/AI Bots.poster.jpg",
+        logo: "assets/projects/sbe-minor/ai bots.jpg",
+      },
+    };
+    const projectVideos = [];
+    let slideStartTimer;
+    let advanceTimer;
+    Object.entries(projectMedia).forEach(([flow, media]) => {
+      const preview = document.querySelector(`.workflow-preview[data-flow="${flow}"]`);
+            if (!preview) throw new Error(`Missing project preview for ${flow}`);
+
+      if (media.image) {
+        const imagePreview = preview.closest(".project-preview");
+        if (!imagePreview) throw new Error(`Missing card preview for ${flow}`);
+        preview.replaceChildren();
+        preview.remove();
+        const gallery = document.createElement("span");
+        gallery.className = "project-image-gallery";
+        gallery.setAttribute("aria-hidden", "true");
+        const img = document.createElement("img");
+        img.className = "is-active";
+        img.src = media.image;
+        img.alt = "";
+        img.decoding = "async";
+        gallery.append(img);
+        imagePreview.append(gallery);
+        if (media.logo) {
+          imagePreview.closest(".project-card").classList.add("has-project-logo");
+          const imageLogo = document.createElement("img");
+          imageLogo.className = "project-video-logo";
+          imageLogo.src = media.logo;
+          imageLogo.alt = "";
+          imageLogo.loading = "lazy";
+          imageLogo.decoding = "async";
+          imageLogo.setAttribute("aria-hidden", "true");
+          imagePreview.append(imageLogo);
+        }
+        return;
+      }
+
+      const video = document.createElement("video");
+      video.className = "project-video";
+      video.src = media.video;
+      video.poster = media.poster;
+      video.muted = true;
+      video.loop = false;
+      video.playbackRate = 2;
+      video.playsInline = true;
+      video.preload = "metadata";
+      video.tabIndex = -1;
+      video.setAttribute("aria-hidden", "true");
+      video.addEventListener("error", () => {
+        console.error("Project preview video failed to load:", media.video, video.error);
+      });
+      video.addEventListener("loadedmetadata", refreshScrollRails, { once: true });
+      const cardPreview = preview.closest(".project-preview");
+      if (!cardPreview) throw new Error(`Missing card preview for ${flow}`);
+      preview.replaceChildren();
+      preview.remove();
+      cardPreview.append(video);
+      projectVideos.push(video);
+
+      if (media.logo) {
+        cardPreview.closest(".project-card").classList.add("has-project-logo");
+        const logo = document.createElement("img");
+        logo.className = "project-video-logo";
+        logo.src = media.logo;
+        logo.alt = "";
+        logo.loading = "lazy";
+        logo.decoding = "async";
+        logo.setAttribute("aria-hidden", "true");
+        cardPreview.append(logo);
+      }
+      video.addEventListener("ended", () => finishProjectPreview(video.closest(".project-card")));
+    });
+    projectCards.forEach((card) => {
+      const title = card.querySelector(".project-heading strong")?.textContent.trim();
+      if (!title) throw new Error("Missing project title for slide mark");
+      const organization = card.querySelector(".project-meta div:first-child dd")?.textContent.trim();
+      const projectType = card.querySelector(".project-type")?.textContent.trim();
+      const isIndependent = projectType?.toLowerCase() === "independent";
+      const association = isIndependent
+        ? projectType
+        : organization || card.querySelector(".project-heading span")?.textContent.trim() || "";
+      const cardLabel = card.querySelector(".project-label .project-heading span");
+      if (cardLabel && association) cardLabel.textContent = association;
+      if (isIndependent) {
+        const preview = card.querySelector(".project-preview");
+        if (!preview) throw new Error(`Missing project preview for ${title}`);
+        const token = document.createElement("span");
+        token.className = "project-video-logo project-independent-token";
+        token.textContent = "Independent";
+        token.setAttribute("aria-hidden", "true");
+        preview.append(token);
+        card.classList.add("has-project-logo");
+      }
+
+      const mark = document.createElement("span");
+      mark.className = "project-slide-mark";
+      const markTitle = document.createElement("strong");
+      markTitle.textContent = title;
+      mark.append(markTitle);
+      if (association) {
+        const markAssociation = document.createElement("span");
+        markAssociation.textContent = association;
+        mark.append(markAssociation);
+      }
+      mark.setAttribute("aria-hidden", "true");
+      if (!card.querySelector(".project-image-gallery")) {
+        card.querySelector(".project-preview").append(mark);
+      }
+
+      const detail = card.querySelector(".project-detail-inner");
+      if (!detail) throw new Error(`Missing project details for ${title}`);
+      const detailTitle = document.createElement("h4");
+      detailTitle.className = "project-detail-title";
+      detailTitle.textContent = title;
+           detail.prepend(detailTitle);
+      const moreButton = document.createElement("button");
+      moreButton.type = "button";
+      moreButton.className = "project-flip project-more";
+      moreButton.innerHTML = '<span class="project-more-label">More details</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>';      moreButton.setAttribute("aria-expanded", "false");
+      card.querySelector(".project-meta")?.after(moreButton);
+      moreButton.addEventListener("click", () => {
+        const expanded = card.classList.toggle("is-expanded");
+        moreButton.querySelector(".project-more-label").textContent = expanded ? "Less" : "More details";        moreButton.setAttribute("aria-expanded", String(expanded));
+        card.querySelector(".project-detail").scrollTop = 0;
+        if (expanded) window.clearTimeout(advanceTimer);
+      });
+    });
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const portfolioSections = document.querySelectorAll(".portfolio-section");
+    const canScrollDriveRails = window.matchMedia("(min-width: 651px)");
+    const projectGalleries = [...document.querySelectorAll(".project-image-gallery")];
+    const galleryTimers = new Map();
+    let currentSlideCard = null;
+    let scrollFrame;
+    let scrollIdleTimer;
+
+    projectGalleries.forEach((gallery) => {
+      const images = [...gallery.querySelectorAll("img")];
+      if (!images.length) throw new Error("Project image gallery is empty");
+      images.forEach((image) => {
+        image.addEventListener("error", () => {
+          console.error("Project image failed to load:", image.src);
+        });
+        image.addEventListener("load", refreshScrollRails, { once: true });
+      });
+    });
+    startGalleryRotations();
+
+    function startGalleryRotations() {
+      if (prefersReducedMotion.matches) return;
+      projectGalleries.forEach((gallery, index) => {
+        if (gallery.querySelectorAll("img").length > 1) {
+          scheduleGalleryRotation(gallery, 1000 + index * 350);
+        }
+      });
+    }
+
+    function stopGalleryRotations() {
+      galleryTimers.forEach((timer) => window.clearTimeout(timer));
+      galleryTimers.clear();
+    }
+
+    function scheduleGalleryRotation(gallery, delay) {
+      const timer = window.setTimeout(() => {
+        galleryTimers.delete(gallery);
+        if (!document.hidden && !prefersReducedMotion.matches) {
+          const images = [...gallery.querySelectorAll("img")];
+          const activeIndex = images.findIndex((image) => image.classList.contains("is-active"));
+          images[activeIndex]?.classList.remove("is-active");
+          images[(activeIndex + 1) % images.length].classList.add("is-active");
+        }
+        if (!prefersReducedMotion.matches) scheduleGalleryRotation(gallery, 2500);
+      }, delay);
+      galleryTimers.set(gallery, timer);
+    }
+
+    portfolioSections.forEach((section) => {
+      const controls = document.createElement("div");
+      controls.className = "project-slide-controls";
+      controls.setAttribute("role", "group");
+      controls.setAttribute("aria-label", "Project navigation");
+      [-1, 1].forEach((direction) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.dataset.direction = String(direction);
+        button.setAttribute("aria-label", direction < 0 ? "Previous project" : "Next project");
+        button.textContent = direction < 0 ? "◀" : "▶";
+        button.addEventListener("click", () => moveProjectSlide(section, direction));
+        controls.append(button);
+      });
+      section.querySelector(".project-stage").append(controls);
+    });
+
+    function getNearestProjectIndex(projectWindow, cards) {
+      const center = projectWindow.getBoundingClientRect().left + projectWindow.clientWidth / 2;
+      return cards.reduce((nearestIndex, card, index) => {
+        const bounds = card.getBoundingClientRect();
+        const distance = Math.abs((bounds.left + bounds.right) / 2 - center);
+        if (nearestIndex < 0) return index;
+        const nearestBounds = cards[nearestIndex].getBoundingClientRect();
+        const nearestDistance = Math.abs((nearestBounds.left + nearestBounds.right) / 2 - center);
+        return distance < nearestDistance ? index : nearestIndex;
+      }, -1);
+    }
+
+    function moveProjectSlide(section, direction) {
+      const projectWindow = section.querySelector(".project-window");
+      const cards = [...section.querySelectorAll(".project-card")];
+      const currentIndex = getNearestProjectIndex(projectWindow, cards);
+      const nextCard = cards[currentIndex + direction];
+      if (!nextCard) return;
+      const windowBounds = projectWindow.getBoundingClientRect();
+      const cardBounds = nextCard.getBoundingClientRect();
+      projectWindow.scrollTo({
+        left: projectWindow.scrollLeft + cardBounds.left - windowBounds.left
+          + cardBounds.width / 2 - projectWindow.clientWidth / 2,
+        behavior: prefersReducedMotion.matches ? "auto" : "smooth",
+      });
+    }
+
+    function updateSlideControls() {
+      if (canScrollDriveRails.matches) return;
+      portfolioSections.forEach((section) => {
+        const controls = section.querySelector(".project-slide-controls");
+        const projectWindow = section.querySelector(".project-window");
+        const cards = [...section.querySelectorAll(".project-card")];
+        controls.hidden = cards.length < 2;
+        const currentIndex = getNearestProjectIndex(projectWindow, cards);
+        controls.querySelector('[data-direction="-1"]').disabled = currentIndex <= 0;
+        controls.querySelector('[data-direction="1"]').disabled = currentIndex >= cards.length - 1;
+      });
+    }
+
+    function getStageOffset(section) {
+      const style = getComputedStyle(section);
+      return (Number.parseFloat(style.paddingTop) || 0) + (Number.parseFloat(style.borderTopWidth) || 0);
+    }
+
+    function getCardCenters(grid, cards) {
+      const gap = Number.parseFloat(getComputedStyle(grid).columnGap) || 0;
+      let position = 0;
+      return cards.map((card) => {
+        const center = position + card.offsetWidth / 2;
+        position += card.offsetWidth + gap;
+        return center;
+      });
+    }
+
+    function getCardProgress(section, card) {
+      const cards = [...section.querySelectorAll(".project-card")];
+      const centers = getCardCenters(section.querySelector(".project-grid"), cards);
+      const distance = centers[cards.indexOf(card)] - centers[0];
+      const travel = centers.at(-1) - centers[0];
+      return travel > 0 ? distance / travel : 0;
+    }
+
+    function updateScrollRails() {
+      let focusedCard = null;
+      portfolioSections.forEach((section) => {
+        if (!section.classList.contains("is-scroll-driven")) return;
+
+        const rail = section.querySelector(".project-rail");
+        const grid = section.querySelector(".project-grid");
+        const cards = [...grid.querySelectorAll(".project-card")];
+        const centers = getCardCenters(grid, cards);
+        const travel = centers.length > 1 ? centers.at(-1) - centers[0] : 0;
+        const stageOffset = getStageOffset(section);
+        const start = section.getBoundingClientRect().top + stageOffset;
+        const duration = Number.parseFloat(section.style.getPropertyValue("--scroll-duration")) || travel;
+        const progress = duration > 0 ? Math.max(0, Math.min(1, -start / duration)) : 0;
+        const sectionBounds = section.getBoundingClientRect();
+        const isActiveSection = sectionBounds.top + stageOffset <= window.innerHeight * .5
+          && sectionBounds.bottom > window.innerHeight * .5;        if (centers.length) {
+                  const targetCenter = centers[0] + travel * progress;
+          grid.style.transform = `translate3d(${rail.clientWidth / 2 - targetCenter}px, 0, 0)`;
+        } else {
+          grid.style.transform = "";
+        }
+
+            let sectionFocus = null;
+                    if (cards.length > 1) {
+          cards[0].classList.toggle("passed", centers[0] + travel * progress > (centers[0] + centers[1]) / 2);
+        }
+        if (isActiveSection && cards.length) {
+          const targetCenter = centers[0] + travel * progress;
+          sectionFocus = cards.reduce((nearest, card, index) =>
+            !nearest || Math.abs(centers[index] - targetCenter) < Math.abs(centers[cards.indexOf(nearest)] - targetCenter)
+              ? card : nearest, null);
+          focusedCard = sectionFocus;
+        }
+        section.classList.toggle("first-passed",
+          sectionBounds.bottom <= window.innerHeight * .5 || Boolean(sectionFocus && sectionFocus !== cards[0]));
+      });
+
+      if (!canScrollDriveRails.matches || prefersReducedMotion.matches) {
+                portfolioSections.forEach((section) => {
+          const cards = [...section.querySelectorAll(".project-card")];
+          cards[0]?.classList.toggle("passed", getNearestProjectIndex(section.querySelector(".project-window"), cards) > 0);
+        });
+        const visibleSections = [...portfolioSections].map((section) => {
+          const windowRect = section.querySelector(".project-window").getBoundingClientRect();
+          const visible = windowRect.bottom > 0 && windowRect.top < window.innerHeight;
+          return { section, windowRect, visible, distance: Math.abs((windowRect.top + windowRect.bottom) / 2 - window.innerHeight * .42) };
+        }).filter((entry) => entry.visible).sort((a, b) => a.distance - b.distance);
+        const visibleSection = visibleSections[0];
+        if (visibleSection) {
+                   const cards = [...visibleSection.section.querySelectorAll(".project-card")];
+          const center = (visibleSection.windowRect.left + visibleSection.windowRect.right) / 2;
+          focusedCard = cards.reduce((closest, card) => {
+            const bounds = card.getBoundingClientRect();
+            return !closest || Math.abs((bounds.left + bounds.right) / 2 - center) <
+              Math.abs((closest.getBoundingClientRect().left + closest.getBoundingClientRect().right) / 2 - center)
+              ? card : closest;
+                  }, null);
+          visibleSection.section.classList.toggle("first-passed", focusedCard !== cards[0]);
+        }
+      }
+      setFocusedSlide(focusedCard);
+      updateSlideControls();
+    }
+
+    function refreshScrollRails() {
+      document.documentElement.style.setProperty(
+        "--viewport-gutter",
+        `${window.innerWidth - document.documentElement.clientWidth}px`,
+      );
+      const shouldScrollDrive = canScrollDriveRails.matches && !prefersReducedMotion.matches;
+      portfolioSections.forEach((section) => {
+        const grid = section.querySelector(".project-grid");
+        const cards = [...grid.querySelectorAll(".project-card")];
+        section.classList.toggle("is-scroll-driven", shouldScrollDrive);
+        grid.style.transform = "";
+        const isPhone = !canScrollDriveRails.matches;
+        const stage = section.querySelector(".project-stage");
+        const maxWidth = shouldScrollDrive
+          ? Math.max(280, Math.min(window.innerWidth - 72, 1500))
+          : isPhone
+            ? Math.max(280, Math.min(window.innerWidth * .92, 540))
+            : Math.max(280, Math.min(window.innerWidth * .88, 500));
+        const stageHeight = shouldScrollDrive
+          ? window.innerHeight
+          : isPhone ? stage.clientHeight : window.innerHeight * .72;
+        const maxHeight = Math.max(160, stageHeight - (shouldScrollDrive ? 150 : isPhone ? 136 : 130));        cards.forEach((card) => {
+          const video = card.querySelector(".project-video");
+          const image = card.querySelector(".project-image-gallery img");
+          const naturalWidth = video?.videoWidth || image?.naturalWidth || 720;
+          const naturalHeight = video?.videoHeight || image?.naturalHeight || 720;
+          const scale = Math.min(maxWidth / naturalWidth, maxHeight / naturalHeight);
+          const fittedWidth = Math.round(naturalWidth * scale);
+          const width = isPhone
+            ? Math.round(maxWidth)
+            : shouldScrollDrive
+              ? Math.max(fittedWidth, Math.min(maxWidth, 1040))
+              : fittedWidth;
+          const height = isPhone ? Math.round(maxHeight) : Math.round(naturalHeight * scale);
+          card.style.setProperty("--card-width", `${width}px`);
+          card.style.setProperty("--card-height", `${height}px`);
+          card.style.flexBasis = `${width}px`;
+          if (isPhone) {
+            const mediaHeight = Math.round(Math.min(Math.max(width * naturalHeight / naturalWidth, height * .4), height * .6));
+            card.style.setProperty("--media-h", `${mediaHeight}px`);
+          } else {
+            card.style.removeProperty("--media-h");
+          }
+        });
+
+        if (shouldScrollDrive) {
+          const centers = getCardCenters(grid, cards);
+          const travel = centers.length > 1 ? centers.at(-1) - centers[0] : 0;
+          section.style.setProperty("--scroll-duration", `${travel}px`);
+        } else {
+          section.style.removeProperty("--scroll-duration");
+          cards.forEach((card) => {
+            card.classList.remove("is-current", "is-receded");
+          });
+        }
+      });
+      updateScrollRails();
+    }
+
+    function requestScrollRailUpdate() {
+      if (scrollFrame) return;
+      scrollFrame = window.requestAnimationFrame(() => {
+        scrollFrame = null;
+        updateScrollRails();
+      });
+    }
+
+    function handleProjectScroll() {
+      if (canScrollDriveRails.matches && !prefersReducedMotion.matches) {
+        portfolioSections.forEach((section) => section.classList.add("is-scrolling"));
+        window.clearTimeout(scrollIdleTimer);
+        scrollIdleTimer = window.setTimeout(() => {
+          portfolioSections.forEach((section) => section.classList.remove("is-scrolling"));
+          requestScrollRailUpdate();
+        }, 180);
+      }
+      requestScrollRailUpdate();
+    }
+
+    window.addEventListener("scroll", handleProjectScroll, { passive: true });
+    document.querySelectorAll(".project-window").forEach((projectWindow) => {
+      projectWindow.addEventListener("scroll", requestScrollRailUpdate, { passive: true });
+    });
+    window.addEventListener("resize", refreshScrollRails);
+    canScrollDriveRails.addEventListener("change", refreshScrollRails);
+    prefersReducedMotion.addEventListener("change", () => {
+      refreshScrollRails();
+      if (prefersReducedMotion.matches) {
+        stopGalleryRotations();
+        window.clearTimeout(slideStartTimer);
+        projectVideos.forEach((video) => video.pause());
+        if (currentSlideCard) {
+          currentSlideCard.classList.remove("is-playing");
+          finishProjectPreview(currentSlideCard);
+        }
+      } else {
+        startGalleryRotations();
+      }
+    });
+    refreshScrollRails();
+
+    function setFocusedSlide(card) {
+      if (currentSlideCard === card) {
+        projectCards.forEach((projectCard) => {
+          const inFocusedRail = card && projectCard.closest(".portfolio-section") === card.closest(".portfolio-section");
+          projectCard.classList.toggle("is-current", projectCard === card);
+          projectCard.classList.toggle("is-receded", Boolean(inFocusedRail && projectCard !== card));
+        });
+        if (card && !card.open) {
+          card.open = true;
+          card.querySelector(".project-detail-inner").inert = false;
+        }
+        return;
+      }
+      window.clearTimeout(slideStartTimer);
+      window.clearTimeout(advanceTimer);
+      currentSlideCard?.querySelector("video")?.pause();
+      if (currentSlideCard) {
+          currentSlideCard.classList.remove("is-title", "is-playing", "is-expanded");
+        const moreBtn = currentSlideCard.querySelector(".project-more");
+        if (moreBtn) { moreBtn.querySelector(".project-more-label").textContent = "More details"; moreBtn.setAttribute("aria-expanded", "false"); }        const leftPanel = currentSlideCard.querySelector(".project-detail");
+        if (leftPanel) leftPanel.scrollTop = 0;
+               currentSlideCard.open = false;
+        currentSlideCard.dataset.played = "false";
+        currentSlideCard.querySelector(".project-detail-inner").inert = true;
+      }
+      currentSlideCard = card;
+      projectCards.forEach((projectCard) => {
+        const inFocusedRail = card && projectCard.closest(".portfolio-section") === card.closest(".portfolio-section");
+        projectCard.classList.toggle("is-current", projectCard === card);
+        projectCard.classList.toggle("is-receded", Boolean(inFocusedRail && projectCard !== card));
+      });
+      if (!card) return;
+
+      card.open = true;
+      card.querySelector(".project-detail-inner").inert = false;
+      card.dataset.played = "false";
+      if (card.querySelector("video")) {
+        startFocusedSlide(card);
+      } else {
+        slideStartTimer = window.setTimeout(() => startFocusedSlide(card), 650);
+      }
+    }
+
+    function startFocusedSlide(card) {
+      if (currentSlideCard !== card) return;
+      const bounds = card.getBoundingClientRect();
+      if (bounds.bottom <= 0 || bounds.top >= window.innerHeight) return;
+      if (prefersReducedMotion.matches) {
+        finishProjectPreview(card);
+        return;
+      }
+      const video = card.querySelector("video");
+      if (video) {
+        startProjectVideo(card, video);
+        return;
+      }
+      card.classList.add("is-title");
+      slideStartTimer = window.setTimeout(() => finishProjectPreview(card), 1200);
+    }
+
+    function startProjectVideo(card, video) {
+      if (card !== currentSlideCard || prefersReducedMotion.matches) return;
+      card.classList.remove("is-title");
+      card.classList.add("is-playing");
+      video.currentTime = 0;
+      video.playbackRate = 2;
+      video.play().catch((error) => {
+        if (!["AbortError", "NotAllowedError"].includes(error.name)) {
+          console.error("Project preview video could not play:", video.src, error);
+        }
+      });
+    }
+
+    function finishProjectPreview(card) {
+      if (!card || card !== currentSlideCard) return;
+      window.clearTimeout(advanceTimer);
+      card.dataset.played = "true";
+      card.querySelector("video")?.pause();
+      if (!prefersReducedMotion.matches) {
+        advanceTimer = window.setTimeout(() => advanceFromCard(card), 4500);
+      }
+    }
+
+    function advanceFromCard(card) {
+      if (currentSlideCard !== card) return;
+      if (card.classList.contains("is-expanded")) return;      const cards = [...projectCards];      const nextCard = cards[cards.indexOf(card) + 1];
+      if (!nextCard) return;
+      const nextSection = nextCard.closest(".portfolio-section");
+      if (nextSection.classList.contains("is-scroll-driven")) {
+        const progress = getCardProgress(nextSection, nextCard);
+        const travel = Number.parseFloat(nextSection.style.getPropertyValue("--scroll-duration")) || 0;
+        const top = window.scrollY + nextSection.getBoundingClientRect().top + getStageOffset(nextSection) + progress * travel;
+        window.scrollTo({ top, behavior: "smooth" });
+      } else {
+        nextCard.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+      }
+    }
+
+    projectCards.forEach((card) => {
+      card.querySelector("summary").addEventListener("click", (event) => {
+        event.preventDefault();
+      });
+      card.addEventListener("focusin", () => {
+        const section = card.closest(".portfolio-section");
+        if (section.classList.contains("is-scroll-driven")) {
+          const grid = section.querySelector(".project-grid");
+          const travel = Number.parseFloat(section.style.getPropertyValue("--scroll-duration")) || 0;
+          if (travel > 0) {
+            const progress = getCardProgress(section, card);
+            const stageOffset = getStageOffset(section);
+            const top = window.scrollY + section.getBoundingClientRect().top + stageOffset + progress * travel;
+            window.scrollTo({ top, behavior: prefersReducedMotion.matches ? "instant" : "smooth" });
+          }
+        }
+      });
+      card.addEventListener("toggle", () => syncCard(card));
+      card.querySelector(".project-detail-inner").inert = true;
+    });
+
+    function syncCard(card) {
+      const detail = card.querySelector(".project-detail-inner");
+      detail.inert = !card.open;
+    }
+  </script>
+</body>
+</html>
